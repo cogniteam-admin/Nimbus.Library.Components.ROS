@@ -1,0 +1,202 @@
+{
+  "name": "nimbus/hamster-driver-simulation",
+  "category": "Drivers/Robots",
+  "type": "COMPONENT_TYPE_COMPONENT",
+  "className": "Ros1Component",
+  "description": "Cogniteam Hamster V7 Nvidia Xavier NX driver\ngit: https://github.com/cognimbus/nimbus.library/tree/master/Library/Components/hamster-driver\n:License BSD",
+  "environment": {
+    "name": "hamster driver",
+    "state": "ENVIRONMENT_STATE_UNLOADED",
+    "requiredDevices": [],
+    "dockerInfo": {
+     	
+      "image": "cognimbus/hamster-driver",
+      "commands": [
+        "roslaunch",
+        "hamster_driver",
+        "hamster_driver.launch",
+        "serial_port:=${serial_port}",
+        "robot_id:=${robot_id}",
+        "odom_frame:=${odom_frame}",
+        "base_frame:=${base_frame}",
+        "max_speed:=${max_speed}",
+        "steer_offset:=${steer_offset}",
+        "mag_offset_x:=${mag_offset_x}",
+        "mag_offset_y:=${mag_offset_y}",
+        "mag_offset_z:=${mag_offset_z}",
+        "gyro_offset_x:=${gyro_offset_x}",
+        "gyro_offset_y:=${gyro_offset_y}",
+        "gyro_offset_z:=${gyro_offset_z}",
+        "enable_gps:=${enable_gps}",
+        "enable_detection:=${enable_detection}",
+        "enable_realsense:=${enable_realsense}"
+
+      ],
+      "privileged": true
+    }
+  },
+  "parameters": {
+    "parameters": [
+      {
+        "name": "serial_port",
+        "description": "Will attach to the device with the given serial port (Linux USB device port).",
+        "stringValue": "/dev/ttyAMA0"
+      },
+      {
+        "name": "enable_realsense",
+        "description": "If this flag is true, the hamster_driver will enable realsense.",
+        "booleanValue": "false"
+      },
+      {
+        "name": "robot_id",
+        
+        "description": "",
+        "stringValue": ""
+      },
+      {
+        "name": "odom_frame",
+        
+        "description": "The odometry frame, defines the origin coordinate system in ROS convention.",
+        "stringValue": "odom"
+      },
+      {
+        "name": "base_frame",
+        
+        "description": "The base_frame of the robot, defines the frame_id all static transformations refers to.",
+        "stringValue": "base_link"
+      },
+      {
+        "name": "max_speed",
+        
+        "description": "The maximum speed the hamster can have.",
+        "doubleValue": 1.2
+      },
+      {
+        "name": "steer_offset",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "mag_offset_x",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "mag_offset_y",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "mag_offset_z",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "gyro_offset_x",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "gyro_offset_y",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "gyro_offset_z",
+        
+        "description": "",
+        "doubleValue": 0.0
+      },
+      {
+        "name": "enable_gps",
+        
+        "description": "If this flag is true, the hamster_driver will use gps.",
+        "booleanValue": "true"
+      },
+      {
+        "name": "enable_detection",
+        
+        "description": "",
+        "booleanValue": "false"
+      }
+    ]
+  },
+  "streams": {
+    "inputStreams": [
+      {
+        "name": "ackermann_cmd",
+        "type": "",
+        "description": "Time stamped drive command for robots with Ackermann steering.",
+        "ros_topic": {
+          "topic": "/ackermann_cmd",
+          "type": "Messages.ackermann_msgs.AckermannDriveStamped"
+        }
+      },
+      {
+        "name": "twist_cmd",
+        "type": "",
+        "description": "This expresses velocity in free space broken into its linear and angular parts.",
+        "ros_topic": {
+          "topic": "/twist_cmd",
+          "type": "Messages.geometry_msgs.Twist"
+        }
+      },
+      {
+        "name": "gyro",
+        "type": "",
+        "description": "gyro stream (which shows angular velocity).",
+        "ros_topic": {
+          "topic": "/camera/gyro/sample",
+          "type": "Messages.sensor_msgs.Imu"
+        }
+      },
+      {
+        "name": "accel",
+        "type": "",
+        "description": "accel stream (which shows linear acceleration).",
+        "ros_topic": {
+          "topic": "/camera/accel/sample",
+          "type": "Messages.sensor_msgs.Imu"
+        }
+      }
+    ],
+    "outputStreams": [
+      {
+        "name": "odom",
+        "type": "",
+        "description": "This represents an estimate of a position and velocity in free space.",
+        "ros_topic": {
+          "topic": "/odom",
+          "type": "Messages.nav_msgs.Odometry"
+        }
+      },
+      {
+        "name": "battery",
+        "type": "",
+        "description": "The current battery voltage the hamster have.",
+        "ros_topic": {
+          "topic": "/battery",
+          "type": "Messages.std_msgs.Float32"
+        }
+      }
+    ]
+  },
+  "requiredDevices": [
+    {
+      "name": "hamster",
+      "info": {
+        "type": "USB_PORT_TYPE_CAMERA",
+        "vendorId": "8086"     
+      },
+      "mountAs": "/dev/videoX",
+      "optional": true
+    }
+
+  ]
+}
