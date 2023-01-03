@@ -146,3 +146,7 @@ the source code for the device/component deployment is located in https://git.co
 - The [--vins-mono-zr300-vio-t265-realsense-rviz-pgo](https://hub.docker.com/r/cognimbus/vins-mono-zr300-vio-t265-realsense-rviz-pgo) image provides an interface for visualizing part to whole registration with the Intel Realsense cameras (T265 and ZED-R300) in RViz.
 
 - The [--vins-mono-zr300-vio-t265-realsense-rviz](https://hub.docker.com/r/cognimbus/vins-mono-zr300-vio-t265-realsense-rviz) image provides an interface for visualizing the outputs of the Intel Realsense (T265 and ZED-R300) cameras with RViz, offering users an easy way to configure and view their robot's environment.- 
+
+
+## Addendum:
+The Docker containers provide a convenient way for users to quickly set up AI/ML applications, including the use of deep learning, computer vision, and other algorithms. These Docker containers allow for reproducible, shareable, and manageable development projects. They can be used across a range of architectures, ensuring compatibility with all modern software development platforms.
