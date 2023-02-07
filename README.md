@@ -40,7 +40,7 @@ client-service-example | linux/amd64 , linux/arm64 | https://hub.docker.com/r/co
 cogniteam-anomaly-detection | linux/amd64 , linux/arm64 |https://hub.docker.com/r/cognimbus/cogniteam-anomaly-detection
 cogniteam-coverage-exploration | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/cogniteam-coverage-exploration
 cogniteam-image-rotate-filp | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/image-rotate-filp
-`cogniteam-person-follower-depth` | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/cogniteam-person-follower-depth
+cogniteam-person-follower-depth | linux/amd64 , linux/arm64 |  https://hub.docker.com/repository/docker/cognimbus/person-follower/general
 cogniteam-person-follower-rgb | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/person_follower_rgb_camera 
 cogniteam-person-follower-sensor-fusion | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/cogniteam-person-follower-sensor-fusion
 cogniteam-skeleton-gestures | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/cogniteam-skeleton-gestures
@@ -53,7 +53,7 @@ faces-landsmarks-mediapipe-amd | linux/amd64 , linux/arm64 | https://hub.docker.
 generic-webcam | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/opencv-webcam-driver
 gmapping | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/gmapping
 hamster-driver | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/hamster-driver
-`hamster-v8-environment` | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/hamster-v8-environment
+hamster-v8-environment | linux/amd64 , linux/arm64 | No Docker Image
 hamster-wandering | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/hamster-wandering
 hands_pose_detectoion | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/hands-pose-detection
 hector-mapping | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/hector-mapping
@@ -75,7 +75,7 @@ move-base-navigation | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cogn
 novatel-gps | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/novatel-gps
 odom-republisher/odom-republisher | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/rover-odom-republisher
 omron-ld60-driver | linux/amd64 | https://hub.docker.com/r/cognimbus/omron_ld60_driver
-`openvino` |  | https://hub.docker.com/r/cognimbus/openvino
+openvino | linux/amd64 | https://hub.docker.com/r/intelpengo/openvino
 orb2-slam | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/orb2-slam
 ouster-driver/ouster-driver | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros1-ouster-driver
 path-publisher | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/path-publisher
@@ -84,26 +84,18 @@ razor-imu | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/razor
 realsense-camera | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros2-realsense-camera
 realsense-t265 | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/realsenset265
 ros-deep-learning-jetson-inference | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros_deep_learning_jetson_inference
-`ros-serial-st-python` | | https://hub.docker.com/r/cognimbus/ros-serial-st-python
-`ros-tutorials-listener/ros-tutorials-listener` | | https://hub.docker.com/r/cognimbus/ros-tutorials-listener/ros-tutorials-listener
+ros-serial-st-python | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/rosserial_st_python
+ros-tutorials-listener | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/sdk-examples 
 ros1-gateway-arm32 | linux/arm/v7 | https://hub.docker.com/r/cognimbus/ros1-gateway-arm32
 ros1-gateway-launch | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros1-gateway
 ros_audio | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros-audio
 rover-driver | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/rover-driver
 rtsp-camera | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/rtsp-camera
 server-service-example | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/server-service
-`sick-tim-driver` | | https://hub.docker.com/r/cognimbus/sick-tim-driver
 slam-gmapping | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/slam_gmapping
-`speech-recognition` | | https://hub.docker.com/r/cognimbus/speech-recognition
-`tf-from-rviz` | | https://hub.docker.com/r/cognimbus/tf-from-rviz
-`tf2-from-rviz` | | https://hub.docker.com/r/cognimbus/tf2-from-rviz
-`tf2-web-republisher` | | https://hub.docker.com/r/cognimbus/tf2-web-republisher
 turtlebot-navigation | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-`urdf-to-graphviz` | | https://hub.docker.com/r/cognimbus/urdf-to-graphviz
 usb-camera | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/usb-cam
- `usb-microphone` | | https://hub.docker.com/r/cognimbus/usb-microphone
 v2-joystick | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/joystick-teleop
-`video-to-rgb` | | https://hub.docker.com/r/cognimbus/video-to-rgb
 `vins-mono-kitti` | | https://hub.docker.com/r/cognimbus/vins-mono-kitti
 `vins-mono-pgo` | | https://hub.docker.com/r/cognimbus/vins-mono-pgo
 `vins-mono-realsense` | | https://hub.docker.com/r/cognimbus/vins-mono-realsense
@@ -118,5 +110,6 @@ v2-joystick | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/joy
 `vins-mono-zr300-vio-t265-realsense-rviz` | | https://hub.docker.com/r/cognimbus/vins-mono-zr300-vio-t265-realsense-rviz
 `vins-mono-zr300-vio-t265-realsense-rviz-pgo` | | https://hub.docker.com/r/cognimbus/vins-mono-zr300-vio-t265-realsense-rviz-pgo
 `vins-mono-zr300-vio-t265-realsense-rviz` | | https://hub.docker.com/r/cognimbus/vins-mono-zr300-vio-t265-realsense-rviz
+vosk-speech-to-text | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/vosk-speech-to-text
 
 - docker hub repo: [here](https://hub.docker.com/r/cognimbus/)
