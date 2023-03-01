@@ -22,7 +22,7 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "saarcogniteam/ros1-autopilot-bridge-test:navSatFix",
+      "image": "cognimbus/ros1-autopilot-bridge:navSatFix",
       "containerId": "",
       "imageSize": 0,
       "commands": [

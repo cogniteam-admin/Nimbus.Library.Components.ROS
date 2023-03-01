@@ -1,3 +1,3 @@
-FROM saarcogniteam/ros1-autopilot-bridge-test:navSatFix
+FROM cognimbus/ros1-autopilot-bridge:navSatFix
 
 ENTRYPOINT ["/entrypoint.sh"]
