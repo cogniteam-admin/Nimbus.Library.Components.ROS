@@ -1,0 +1,3 @@
+FROM cognimbus/ros1-autopilot-bridge:navSatFix
+
+ENTRYPOINT ["/entrypoint.sh"]

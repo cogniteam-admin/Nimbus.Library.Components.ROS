@@ -31,6 +31,7 @@ amcl | linux/amd64 | https://hub.docker.com/r/cognimbus/amcl
 arducam-jeston | linux/amd64 | https://hub.docker.com/r/cognimbus/arducam-jetson
 aruco-code-detection | linux/amd64, linux/arm64 | https://hub.docker.com/r/cognimbus/aruco-code-detection
 audio_say | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/audio_say
+autopilot-bridge | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros1-autopilot-bridge
 bboxes-to-3d-markers | linux/amd64 , linux/arm64 | https://hub.docker.com/repository/docker/cognimbus/bounding_boxes_objects_to_marker_array
 bosch-imu-driver | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/bosch-imu-driver
 caffe-object-detection | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/caffe-object-detection
