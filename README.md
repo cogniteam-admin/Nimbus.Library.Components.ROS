@@ -73,6 +73,7 @@ m-exploration | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/m
 map-server | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/map-server
 mir-driver | linux/amd64 | https://hub.docker.com/r/cognimbus/dfki_mir_driver
 move-base-navigation | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/move-base
+nextVision_cam | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/ros1-nextvision-cam
 novatel-gps | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/novatel-gps
 odom-republisher/odom-republisher | linux/amd64 , linux/arm64 | https://hub.docker.com/r/cognimbus/rover-odom-republisher
 omron-ld60-driver | linux/amd64 | https://hub.docker.com/r/cognimbus/omron_ld60_driver
