@@ -5,6 +5,8 @@
 * ROS project page <a href="http://wiki.ros.org/amcl">http://wiki.ros.org/amcl</a>
 * Dockerhub image https://hub.docker.com/r/cognimbus/amcl
 * Supported architectures <b>amd64</b>
+* ROS version <b>melodic</b>
+
 
 # Component
 Image of the component in nimbus
