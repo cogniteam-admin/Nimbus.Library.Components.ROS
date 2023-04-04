@@ -29,7 +29,7 @@
         "ros2",
         "launch",
         "roverrobotics_driver",
-        "zero2.launch"
+        "mini.launch.py"
       ],
       "privileged": false,
       "gpu": false,
