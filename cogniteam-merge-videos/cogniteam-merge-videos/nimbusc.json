@@ -27,7 +27,7 @@
       "imageSize": 0,
       "commands": [
         "roslaunch",
-        "cogniteam-merge-videos",
+        "merge_videos",
         "merge_videos.launch"
       ],
       "privileged": false,
@@ -63,40 +63,12 @@
         "expectedRate": 0
       },
       {
-        "name": "image_left",
-        "type": "",
-        "description": "",
-        "streamMode": "STREAM_MODE_TOPIC",
-        "rosTopic": {
-          "topic": "/usb_cam_left/image_left",
-          "type": "Messages.sensor_msgs.Image",
-          "qosProfile": ""
-        },
-        "latched": false,
-        "maxRate": 0,
-        "expectedRate": 0
-      },
-      {
-        "name": "image_right",
-        "type": "",
-        "description": "",
-        "streamMode": "STREAM_MODE_TOPIC",
-        "rosTopic": {
-          "topic": "/usb_cam_front/image_right",
-          "type": "Messages.sensor_msgs.Image",
-          "qosProfile": ""
-        },
-        "latched": false,
-        "maxRate": 0,
-        "expectedRate": 0
-      },
-      {
         "name": "image_back",
         "type": "",
         "description": "",
         "streamMode": "STREAM_MODE_TOPIC",
         "rosTopic": {
-          "topic": "/usb_cam_front/image_back",
+          "topic": "/usb_cam_back/image_back",
           "type": "Messages.sensor_msgs.Image",
           "qosProfile": ""
         },
