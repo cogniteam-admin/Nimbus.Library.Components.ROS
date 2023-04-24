@@ -310,7 +310,7 @@
       <param name="DWAPlannerROS/publish_cost_grid_pc" value="$(arg dwa_publish_cost_grid_pc)" />
 
 
-      <!-- <remap from="cmd_vel" to="navigation_velocity_smoother/raw_cmd_vel"/> -->
+      <remap from="cmd_vel" to="raw_cmd_vel"/>
       <remap from="odom" to="$(arg general_odom_topic)"/>
       <remap from="scan" to="$(arg laser_topic)"/>
     </node>

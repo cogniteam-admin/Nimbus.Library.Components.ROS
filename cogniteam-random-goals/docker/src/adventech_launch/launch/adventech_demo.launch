@@ -10,6 +10,7 @@
   <node name="adventech_random_goals_node" pkg="adventech_random_goals" 
             type="adventech_random_goals_node"/>
 
+  <include file="$(find yocs_velocity_smoother)/launch/velocity_smoother_with_params.launch"/>  
 
   <!--Move Base ############################################################################-->
    <include file="$(find adventech_navigation)/launch/includes/move_base.launch.xml">
