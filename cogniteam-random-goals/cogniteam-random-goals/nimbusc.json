@@ -94,7 +94,6 @@
       },
       {
         "name": "odom",
-        "type": "Messages.nav_msgs.Odometry",
         "description": "The odometry of the robot based on the gyro and motor encoders.",
         "streamMode": "STREAM_MODE_TOPIC",
         "rosTopic": {
