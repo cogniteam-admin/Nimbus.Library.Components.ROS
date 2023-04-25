@@ -134,6 +134,34 @@
         "latched": false,
         "maxRate": 0,
         "expectedRate": 0
+      },
+      {
+        "name": "nimbus_robot_pose",
+        "type": "",
+        "description": "Publishes /nimbus_robot_pose",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_robot_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": true,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "nimbus_lidar_pose",
+        "type": "",
+        "description": "Publishes /nimbus_lidar_pose",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/nimbus_lidar_pose",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": true,
+        "maxRate": 0,
+        "expectedRate": 0
       }
     ]
   },
