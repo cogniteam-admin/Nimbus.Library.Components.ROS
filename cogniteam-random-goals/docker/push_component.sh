@@ -18,6 +18,6 @@ docker buildx inspect --bootstrap
 #
 
 
-docker buildx build --platform linux/arm64,linux/amd64 -t cognimbus/cogniteam-random-goals:latest --push .
+docker buildx build --platform linux/arm64,linux/amd64 -t cognimbus/cogniteam-random-goals:test --push .
 
 
