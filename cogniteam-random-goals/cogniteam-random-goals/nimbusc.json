@@ -28,7 +28,9 @@
       "commands": [
         "roslaunch",
         "adventech_launch",
-        "adventech_demo.launch"
+        "adventech_demo.launch",
+        "general_max_vel_x:=${general_max_vel_x}",
+        "general_min_vel_x:=${general_min_vel_x}"
       ],
       "privileged": false,
       "gpu": false,
@@ -41,13 +43,40 @@
   },
   "parameters": {
     "parameters": [
-
+      {
+        "name": "general_max_vel_x",
+        "description": "The maximum forward velocity allowed for the base in meters/sec.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.8
+      },
+      {
+        "name": "general_min_vel_x",
+        "description": "The minimum forward velocity allowed for the base in meters/sec. It is useful to specify this to guarantee that velocity commands sent to a mobile base are high enough to allow the base to overcome friction.",
+        "Category": "Static",
+        "node": "",
+        "doubleValue": 0.2
+      }
     ]
   },
   "state": "COMPONENT_STATE_UNLOADED",
   "message": "",
   "streams": {
     "inputStreams": [
+      {
+        "name": "goal_simple",
+        "type": "",
+        "description": "Provides a non-action interface to move_base for users that don't care about tracking the execution status of their goals (Communicate with move_base node over ROS directly).",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base_simple/goal",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
       {
         "name": "odom_base_link",
         "type": "Nimbus.Core.Messages.Ros1.Messages.nav_msgs.Odometry",
