@@ -1,7 +1,7 @@
 <launch>   
 
-   <arg name="front_camera_topic" default="/usb_cam_front/image_front" /> 
-   <arg name="back_camera_topic" default="/usb_cam_back/image_back" /> 
+   <arg name="front_camera_topic" default="/cam2/camera/image_raw" /> 
+   <arg name="back_camera_topic" default="/camera/image_raw" /> 
    
    <arg name="right_camera_topic" default="/usb_cam_right/image_right" /> 
    <arg name="left_camera_topic" default="/usb_cam_left/image_left" /> 

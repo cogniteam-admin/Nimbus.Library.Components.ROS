@@ -98,8 +98,8 @@ double RIGHT_SCALE_FACTOR = 1.0;
 int RIGHT_STARTING_X_ = 819;
 int RIGHT_STARTING_Y_ = 0;
 
-double BACK_SCALE_FACTOR = 0.5;
-int    BACK_STARTING_X_ = 663;
+double BACK_SCALE_FACTOR = 0.35;
+int    BACK_STARTING_X_ = 400;
 int    BACK_STARTING_Y_ = 20;
 
 string front_camera_topic_;
@@ -332,7 +332,7 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "merge_videos_node");
 
-  ros::NodeHandle nh;
+  ros::NodeHandle nh("~");
 
   //params
   nh.param("front_camera_topic", front_camera_topic_, string("/usb_cam_front/image_front"));
