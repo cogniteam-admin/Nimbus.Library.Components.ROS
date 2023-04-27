@@ -191,7 +191,50 @@
         "latched": true,
         "maxRate": 0,
         "expectedRate": 0
+      },
+      {
+        "name": "plan",
+        "type": "",
+        "description": "The local plan or trajectory that scored the highest on the last cycle. Used primarily for visualization purposes.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/NavfnROS/plan",
+          "type": "Messages.nav_msgs.Path",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "local_cost_map",
+        "type": "",
+        "description": "The values in the local costmap.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/local_costmap/costmap",
+          "type": "Messages.nav_msgs.OccupancyGrid",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "current_goal",
+        "type": "",
+        "description": "current goal.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/move_base/current_goal",
+          "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
       }
+
     ]
   },
   "requiredDevices": [],
