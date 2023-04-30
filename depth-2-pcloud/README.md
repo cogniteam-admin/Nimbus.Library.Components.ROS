@@ -16,7 +16,7 @@ Link to component in nimbus hub
 
 # Example usage
 ```
-docker run -it depth_to_pcloud_scan depth_to_pcloud_scan.launch
+docker run -it cognimbus/depth_to_pcloud_scan depth_to_pcloud_scan depth_to_pcloud_scan.launch
 
 ```
 
