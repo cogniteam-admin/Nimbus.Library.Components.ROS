@@ -57,7 +57,7 @@
   <arg name="local_map_height" default="6.0" />
 
   <!--local map inflation_radius-->
-  <arg name="local_inflation_radius" default="0.1" />
+  <arg name="local_inflation_radius" default="0.3" />
 
   <arg name="custom_param_file" default="$(find adventech_navigation)/param/dummy.yaml"/>
 

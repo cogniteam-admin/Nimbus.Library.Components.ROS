@@ -248,6 +248,10 @@ public:
 
       string global_costmap_frame = msg->header.frame_id;
 
+      // imshow("costMapImg_",costMapImg_);
+      // waitKey(1);
+
+
       // Mat dbg = costMapImg.clone();
       // cvtColor(dbg, dbg, COLOR_GRAY2BGR);
 
@@ -370,8 +374,11 @@ public:
 
       // // create the exploration map (gmapping + global cost map)
       Mat explorationImgMap = currentAlgoMap_.clone();
-      // addDilationByGlobalCostMap(costMapImg_, explorationImgMap, convertPoseToPix(robotPose_));
+      addDilationByGlobalCostMap(costMapImg_, explorationImgMap, convertPoseToPix(robotPose_));
       addFreeSpaceDilation(explorationImgMap);
+
+      // imshow("explorationImgMap",explorationImgMap);
+      // waitKey(1);
 
       Mat binary = explorationImgMap.clone();
       binary.setTo(255, binary >= 254);
@@ -424,7 +431,7 @@ public:
         cv::Point goalPix(xPix,yPix);
         cerr<<"goalPix "<<goalPix<<endl;
         
-        if ( 254 < explorationImgMap.at<uchar>(goalPix.y, goalPix.x)){
+        if (explorationImgMap.at<uchar>(goalPix.y, goalPix.x) != 254 ){
           continue;
         }
 
@@ -447,7 +454,6 @@ public:
         } else {
           continue;
         }       
-
 
       }
 
@@ -568,47 +574,9 @@ public:
       cerr << " failed to addDilationByGlobalCostMap " << endl;
       return;
     }
-    cv::Point2d mapCenter(algoMap.cols / 2, algoMap.rows / 2);
-    cv::Point2d costMapCenter(globalCostMap.cols / 2, globalCostMap.rows / 2);
 
-    // cv::Point robotBaseFootPrint;
+    algoMap.setTo(0, globalCostMap > 0);
 
-    // robotBaseFootPrint.x = (1.1 + 10) /  0.05;
-    // robotBaseFootPrint.y = (-1.43  + 10) / 0.05;
-    // cerr<<" robotBaseFootPrint x "<<robotBaseFootPrint.x<<" robotBaseFootPrint y "<<robotBaseFootPrint.y<<endl;
-
-    int deltaRobotX = mapCenter.x - robotBaseFootPrint.x;
-    int deltaRobotY = mapCenter.y - robotBaseFootPrint.y;
-
-    try
-    {
-      for (int y = 0; y < globalCostMap.rows; y++)
-      {
-        for (int x = 0; x < globalCostMap.cols; x++)
-        {
-          int value = globalCostMap.at<uchar>(y, x);
-
-          if (value > 0)
-          {
-            cv::Point2d nP(x + (mapCenter.x - costMapCenter.x) - deltaRobotX,
-                           y + (mapCenter.y - costMapCenter.y) - deltaRobotY);
-
-            //  cv::Point2d nP(x + (mapCenter.x - costMapCenter.x),
-            //     y + (mapCenter.y - costMapCenter.y)  );
-
-            if (nP.x > 0 && nP.y > 0 && nP.x < algoMap.cols && nP.y < algoMap.rows)
-            {
-              algoMap.at<uchar>(nP.y, nP.x) = 0;
-            }
-          }
-        }
-      }
-    }
-    catch (cv::Exception& e)
-    {
-      const char* err_msg = e.what();
-      std::cerr << "exception caught: " << err_msg << std::endl;
-    }
   }
 
   bool sendGoal(const geometry_msgs::PoseStamped& goalMsg)
