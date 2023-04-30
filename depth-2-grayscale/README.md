@@ -16,7 +16,7 @@ Link to component in nimbus hub
 
 # Example usage
 ```
-docker run -it roslaunch depth_to_grayscale depth_to_grayscale.launch
+docker run -it cognimbus/depth_to_compressed_grayscale_img roslaunch depth_to_grayscale depth_to_grayscale.launch
 
 ```
 
