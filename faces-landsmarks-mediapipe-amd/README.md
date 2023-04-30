@@ -1,6 +1,6 @@
-# AMCL
+# Media Pipe Face Landmarks
 
-<img src="./faces-landsmarks-mediapipe-amd/faces.png" alt="face-landmarks" width="400"/>
+<img src="./faces-landsmarks-mediapipe-amd/faces.jpg" alt="face-landmarks" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/faces-landsmarks-mediapipe-amd
 * Supported architectures <b>amd64</b>
