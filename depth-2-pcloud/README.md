@@ -12,11 +12,11 @@ Image of the component in nimbus
 Link to component in nimbus hub
 
 # Short description
-* convert depth img (with float data) to_compressed_grayscale_img
+* convert depth img (with float data) to point cloud
 
 # Example usage
 ```
-docker run -it cognimbus/amcl roslaunch depth_to_pcloud_scan depth_to_pcloud_scan.launch
+docker run -it depth_to_pcloud_scan depth_to_pcloud_scan.launch
 
 ```
 
