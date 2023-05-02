@@ -167,9 +167,18 @@ public:
     global_map_sub_ =
         node_.subscribe<nav_msgs::OccupancyGrid>("/map", 1, &AdventechRandomGoals::globalMapCallback, this);
 
-    // subs
     global_cost_map_sub_ = node_.subscribe<nav_msgs::OccupancyGrid>("/move_base/global_costmap/costmap", 1,
-                                                                    &AdventechRandomGoals::globalCostMapCallback, this);
+                                                                     &AdventechRandomGoals::globalCostMapCallback, this);
+    
+    start_sto_navigation_sub_ = node_.subscribe<std_msgs::Bool>("/start_stop_navigation", 1,
+                                                                     &AdventechRandomGoals::startStopCallback, this);
+    //pub
+    state_pub_ = node_.advertise<std_msgs::String>("/robot_state", 10);
+
+    stateTimer_ = node_.createTimer(ros::Rate(1), 
+      &AdventechRandomGoals::state_timer_callback, this);
+
+
     initSlamMap_ = false;
 
     /// params
@@ -181,6 +190,8 @@ public:
   ~AdventechRandomGoals()
   {
     moveBaseController_.cancelNavigation();
+
+    stateTimer_.stop();
 
     ros::Duration(1).sleep();
 
@@ -211,6 +222,20 @@ public:
     }
 
     return output;
+  }
+
+  void startStopCallback(const std_msgs::Bool::ConstPtr& msg)
+  {
+      if ( msg->data == true){
+
+        state_ = "RUNNING";
+        enableNav_ = true;
+      
+      } else if ( msg->data == false){
+
+        state_ = "IDLE";
+        enableNav_ = false;
+      } 
   }
 
   void globalCostMapCallback(const nav_msgs::OccupancyGrid::ConstPtr& msg)
@@ -361,6 +386,12 @@ public:
       {
         // << "map not recieved !!" << endl;
 
+        continue;
+      }
+
+      if ( !enableNav_) {
+       
+        moveBaseController_.moveBaseClient_.cancelAllGoals();  
         continue;
       }
 
@@ -580,7 +611,16 @@ public:
   }
 
   bool sendGoal(const geometry_msgs::PoseStamped& goalMsg)
-  {
+  { 
+    ros::spinOnce();
+
+    if ( !enableNav_) {
+        
+      moveBaseController_.moveBaseClient_.cancelAllGoals();  
+
+      return false;
+    }
+
     // navigate to the point
     moveBaseController_.navigate(goalMsg);
 
@@ -589,6 +629,13 @@ public:
     while (ros::ok())
     {
       ros::spinOnce();
+
+       if ( !enableNav_) {
+        
+        moveBaseController_.moveBaseClient_.cancelAllGoals();  
+
+        return false;
+      }
 
       moveBaseController_.moveBaseClient_.waitForResult(ros::Duration(0.1));
       auto move_base_state = moveBaseController_.moveBaseClient_.getState();
@@ -614,20 +661,41 @@ public:
     return result;
   }
 
+  void state_timer_callback(const ros::TimerEvent &event)
+  {
+    std_msgs::String msg;
+    msg.data = state_;
+    state_pub_.publish(msg);
+  }
+
 private:
+  
   ros::NodeHandle node_;
+
+  string state_ = "IDLE";
+
 
   // move-base
   MoveBaseController moveBaseController_;
+
+  //timer
+  ros::Timer stateTimer_;
+
 
   // subs
   ros::Subscriber global_map_sub_;
 
   ros::Subscriber global_cost_map_sub_;
 
+  ros::Subscriber start_sto_navigation_sub_;
+
   // pubs
 
+  ros::Publisher state_pub_;
+
   // ALGO-PARAMS
+
+  bool enableNav_ = false;
 
   cv::Mat currentAlgoMap_;
 
