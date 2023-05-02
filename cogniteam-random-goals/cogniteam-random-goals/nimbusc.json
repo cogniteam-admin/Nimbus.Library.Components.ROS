@@ -249,12 +249,12 @@
         "expectedRate": 0
       },
       {
-        "name": "robot_stat",
+        "name": "robot_state",
         "type": "",
         "description": "current goal.",
         "streamMode": "STREAM_MODE_TOPIC",
         "rosTopic": {
-          "topic": "/robot_stat",
+          "topic": "/robot_state",
           "type": "Messages.std_msgs.String",
           "qosProfile": ""
         },
