@@ -147,6 +147,20 @@
         "latched": false,
         "maxRate": 0,
         "expectedRate": 0
+      },
+      {
+        "name": "start_stop_navigation",
+        "type": "",
+        "description": "",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/start_stop_navigation",
+          "type": "Messages.std_msgs.Bool",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
       }
     ],
     "outputStreams": [
@@ -228,6 +242,20 @@
         "rosTopic": {
           "topic": "/move_base/current_goal",
           "type": "Messages.geometry_msgs.PoseStamped",
+          "qosProfile": ""
+        },
+        "latched": false,
+        "maxRate": 0,
+        "expectedRate": 0
+      },
+      {
+        "name": "robot_stat",
+        "type": "",
+        "description": "current goal.",
+        "streamMode": "STREAM_MODE_TOPIC",
+        "rosTopic": {
+          "topic": "/robot_stat",
+          "type": "Messages.std_msgs.String",
           "qosProfile": ""
         },
         "latched": false,
