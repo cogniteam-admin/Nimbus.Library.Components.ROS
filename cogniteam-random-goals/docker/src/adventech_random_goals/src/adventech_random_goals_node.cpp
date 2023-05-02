@@ -172,11 +172,16 @@ public:
     
     start_sto_navigation_sub_ = node_.subscribe<std_msgs::Bool>("/start_stop_navigation", 1,
                                                                      &AdventechRandomGoals::startStopCallback, this);
+     odom_sub_ = node_.subscribe<nav_msgs::Odometry>("/odom", 1, 
+      &AdventechRandomGoals::odomCallback, this);
+    
     //pub
     state_pub_ = node_.advertise<std_msgs::String>("/robot_state", 10);
 
     stateTimer_ = node_.createTimer(ros::Rate(1), 
       &AdventechRandomGoals::state_timer_callback, this);
+
+    vel_cmd_pub_ = node_.advertise<geometry_msgs::Twist>("/cmd_vel", 1, false);
 
 
     initSlamMap_ = false;
@@ -228,10 +233,14 @@ public:
   {
       if ( msg->data == true){
 
+        moveBaseController_.moveBaseClient_.cancelAllGoals();  
+        
         state_ = "RUNNING";
         enableNav_ = true;
       
       } else if ( msg->data == false){
+
+        moveBaseController_.moveBaseClient_.cancelAllGoals();  
 
         state_ = "IDLE";
         enableNav_ = false;
@@ -377,7 +386,10 @@ public:
   }
 
   bool run()
-  {
+  { 
+
+    std::vector<geometry_msgs::PoseStamped> validGoals;
+
     while (ros::ok())
     {
       ros::spinOnce();
@@ -389,10 +401,15 @@ public:
         continue;
       }
 
-      if ( !enableNav_) {
-       
-        moveBaseController_.moveBaseClient_.cancelAllGoals();  
+      if ( !enableNav_) {       
         continue;
+      }
+
+      if (!initRotation_){
+        
+        rotateInPlace();
+        
+        initRotation_ = true;
       }
 
       if (!updateRobotLocation())
@@ -420,7 +437,6 @@ public:
       findContours(binary, contours, hierarchy, RETR_EXTERNAL,
                     CHAIN_APPROX_NONE, Point(0, 0));
 
-      cerr<<" contours "<<contours.size()<<endl;            
 
 
       auto robotPix = convertPoseToPix(robotPose_);
@@ -441,7 +457,8 @@ public:
       }
 
       if( foundCont) {
-
+        
+        cerr<<" found robot location on the map!! "<<endl;
         Rect r = cv::boundingRect(contours[indexCont]);
 
         int minRangeX = r.x;
@@ -466,6 +483,8 @@ public:
           continue;
         }
 
+       
+
         // circle(binary, robotPix, 2, Scalar(150), -1, 8, 0); 
 
         // circle(binary, goalPix, 2, Scalar(100), -1, 8, 0); 
@@ -473,6 +492,14 @@ public:
         geometry_msgs::Quaternion q;
         q = robotPose_.pose.orientation;
         auto nextGoal = convertPixToPose(goalPix, q);
+
+        float distGoalFromRobot = 
+          distanceCalculate(cv::Point2d(nextGoal.pose.position.x,nextGoal.pose.position.y ), 
+            cv::Point2d(robotPose_.pose.position.x,robotPose_.pose.position.y));
+        
+        if( distGoalFromRobot < 0.3){
+          continue;
+        }
 
         /// calculate the  path
         nav_msgs::Path wanted_path;
@@ -482,16 +509,127 @@ public:
           // imshow("binary",binary);
           // waitKey(1);
           bool result = sendGoal(nextGoal);  
+
+          if( result){
+            validGoals.push_back(nextGoal);
+          }
         } else {
+          
+          cerr<<" failed to make a plan !! "<<endl;
+          
+          if( validGoals.size() > 0) {
+            sendGoal(validGoals[0]);
+          }
+
           continue;
         }       
 
+      } else {
+
+        cerr<<" failed to locate robot !! "<<endl;
+        if( validGoals.size() > 0){
+          sendGoal(validGoals[0]);
+        }
+        
       }
 
      
     }
 
     return false;
+  }
+
+  bool rotateInPlace(int numOfRounds = 1)
+  {
+    geometry_msgs::Twist rotationCmd;
+    rotationCmd.linear.x = 0;
+    rotationCmd.linear.y = 0;
+    rotationCmd.linear.z = 0;
+    rotationCmd.angular.x = 0;
+    rotationCmd.angular.y = 0;
+    // clockwise
+    rotationCmd.angular.z = -abs(0.4);
+
+    float sumOfAngles = 0.0;
+
+    int iteration = 0;
+
+    float prevAngle = 0.0;
+
+    cerr << " start to rotate " << numOfRounds << " rounds " << endl;
+
+   
+
+    while (ros::ok())
+    {
+      updateRobotLocation();     
+
+      float currDeg = angles::to_degrees(
+          atan2((2.0 * (currOdom_.pose.pose.orientation.w * currOdom_.pose.pose.orientation.z +
+                        currOdom_.pose.pose.orientation.x * currOdom_.pose.pose.orientation.y)),
+                (1.0 - 2.0 * (currOdom_.pose.pose.orientation.y * currOdom_.pose.pose.orientation.y +
+                              currOdom_.pose.pose.orientation.z * currOdom_.pose.pose.orientation.z))));
+
+      // init
+      if (iteration == 0)
+      {
+        prevAngle = currDeg;
+        iteration++;
+
+        continue;
+      }
+
+      if (!(prevAngle < 0 && currDeg > 0))
+      {
+        sumOfAngles = sumOfAngles + (prevAngle - currDeg);
+
+        prevAngle = currDeg;
+      }
+      else
+      {
+        sumOfAngles = sumOfAngles + (180 + (180 + prevAngle)) - currDeg;
+
+        prevAngle = currDeg;
+      }
+
+      // cerr<<"sumOfAngles "<<sumOfAngles<<endl;
+
+      int num_of_rounds = (int(sumOfAngles) / 360);
+
+      if (num_of_rounds >= numOfRounds)
+      {
+        geometry_msgs::Twist rotationCmd;
+        rotationCmd.linear.x = 0;
+        rotationCmd.linear.y = 0;
+        rotationCmd.linear.z = 0;
+        rotationCmd.angular.x = 0;
+        rotationCmd.angular.y = 0;
+        rotationCmd.angular.z = 0;
+
+        vel_cmd_pub_.publish(rotationCmd);
+        ros::Duration(0.1).sleep();
+
+        return true;
+      }      
+
+      iteration++;
+
+      vel_cmd_pub_.publish(rotationCmd);
+
+      ros::Duration(0.1).sleep();
+
+      ros::spinOnce();
+    }
+
+    return true;
+  }
+
+  void odomCallback(const nav_msgs::Odometry::ConstPtr &msg)
+  {
+    currOdom_.child_frame_id = msg->child_frame_id;
+    currOdom_.header = msg->header;
+    currOdom_.pose = msg->pose;
+    currOdom_.twist = msg->twist;
   }
 
   cv::Point convertPoseToPix(const geometry_msgs::PoseStamped& pose)
@@ -614,9 +752,7 @@ public:
   { 
     ros::spinOnce();
 
-    if ( !enableNav_) {
-        
-      moveBaseController_.moveBaseClient_.cancelAllGoals();  
+    if ( !enableNav_) {        
 
       return false;
     }
@@ -630,9 +766,7 @@ public:
     {
       ros::spinOnce();
 
-       if ( !enableNav_) {
-        
-        moveBaseController_.moveBaseClient_.cancelAllGoals();  
+       if ( !enableNav_) {        
 
         return false;
       }
@@ -689,13 +823,19 @@ private:
 
   ros::Subscriber start_sto_navigation_sub_;
 
+  ros::Subscriber odom_sub_;
+
   // pubs
 
   ros::Publisher state_pub_;
 
+  ros::Publisher vel_cmd_pub_;
+
   // ALGO-PARAMS
 
   bool enableNav_ = false;
+
+  bool initRotation_ = false;
 
   cv::Mat currentAlgoMap_;
 
@@ -706,6 +846,9 @@ private:
   vector<cv::Point2d> currentCameraScanMapPointsM_;
 
   cv::Mat currentGlobalMap_;
+
+    nav_msgs::Odometry currOdom_;
+
 
   Mat mappingMap_;
 

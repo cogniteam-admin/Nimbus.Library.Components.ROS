@@ -13,7 +13,7 @@
   <arg name="base_frame_id"   default="base_link"/>
   <arg name="global_frame_id" default="map"/>
   <arg name="general_odom_topic" default="odom" />
-  <arg name="laser_topic" default="scan" />
+  <arg name="laser_topic" default="scan_filtered" />
   <arg name="robot_radius" default="0.25" />
 
   <!-- scan -->
@@ -21,13 +21,13 @@
   <arg name="scan_max_obstacle_height" default="0.5" />
   <arg name="scan_observation_persistence" default="0.0" />
   <!-- realsense_camera -->
-  <arg name="d435_cam1_min_obstacle_height" default="0.2" />
+  <!-- <arg name="d435_cam1_min_obstacle_height" default="0.2" />
   <arg name="d435_cam1_max_obstacle_height" default="1.0" />
-  <arg name="d435_cam1_observation_persistence" default="0.0" />
+  <arg name="d435_cam1_observation_persistence" default="0.0" /> -->
 
   <!-- bumper -->
-  <arg name="bump_min_obstacle_height" default="0.0" />
-  <arg name="bump_max_obstacle_height" default="0.15" />
+  <!-- <arg name="bump_min_obstacle_height" default="0.0" />
+  <arg name="bump_max_obstacle_height" default="0.15" /> -->
 
   <!--general -->
   <arg name="max_obstacle_height" default="1.0" />
@@ -224,20 +224,20 @@
       <param name="global_costmap/obstacle_layer/scan/min_obstacle_height" value="$(arg scan_min_obstacle_height)"/>
       <param name="global_costmap/obstacle_layer/scan/max_obstacle_height" value="$(arg scan_max_obstacle_height)"/>
       <!-- realsense heigths -->
-      <param name="local_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
+      <!-- <param name="local_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
       <param name="local_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/>
       <param name="global_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
-      <param name="global_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/>
+      <param name="global_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/> -->
 
       <!-- bump heigths -->
-      <param name="local_costmap/obstacle_layer/bump/min_obstacle_height" value="$(arg bump_min_obstacle_height)"/>
+      <!-- <param name="local_costmap/obstacle_layer/bump/min_obstacle_height" value="$(arg bump_min_obstacle_height)"/>
       <param name="local_costmap/obstacle_layer/bump/max_obstacle_height" value="$(arg bump_max_obstacle_height)"/>
       <param name="global_costmap/obstacle_layer/bump/min_obstacle_height" value="$(arg bump_min_obstacle_height)"/>
-      <param name="global_costmap/obstacle_layer/bump/max_obstacle_height" value="$(arg bump_max_obstacle_height)"/>
+      <param name="global_costmap/obstacle_layer/bump/max_obstacle_height" value="$(arg bump_max_obstacle_height)"/> -->
 
       <!-- realsense observation_persistence-->
-      <param name="local_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
-      <param name="global_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
+      <!-- <param name="local_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
+      <param name="global_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/> -->
 
       <!-- scan observation_persistence-->
       <param name="local_costmap/obstacle_layer/scan/observation_persistence" value="$(arg scan_observation_persistence)"/>
@@ -431,10 +431,10 @@
       <param name="global_costmap/obstacle_layer/scan/min_obstacle_height" value="$(arg scan_min_obstacle_height)"/>
       <param name="global_costmap/obstacle_layer/scan/max_obstacle_height" value="$(arg scan_max_obstacle_height)"/>
       <!-- realsense heigths -->
-      <param name="local_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
+      <!-- <param name="local_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
       <param name="local_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/>
       <param name="global_costmap/obstacle_layer/d435_cam1/min_obstacle_height" value="$(arg d435_cam1_min_obstacle_height)"/>
-      <param name="global_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/>
+      <param name="global_costmap/obstacle_layer/d435_cam1/max_obstacle_height" value="$(arg d435_cam1_max_obstacle_height)"/> -->
 
       <!-- bump heigths -->
       <param name="local_costmap/obstacle_layer/bump/min_obstacle_height" value="$(arg bump_min_obstacle_height)"/>
@@ -443,8 +443,8 @@
       <param name="global_costmap/obstacle_layer/bump/max_obstacle_height" value="$(arg bump_max_obstacle_height)"/>
 
       <!-- realsense observation_persistence-->
-      <param name="local_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
-      <param name="global_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
+      <!-- <param name="local_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/>
+      <param name="global_costmap/obstacle_layer/d435_cam1/observation_persistence" value="$(arg d435_cam1_observation_persistence)"/> -->
 
       <!-- scan observation_persistence-->
       <param name="local_costmap/obstacle_layer/scan/observation_persistence" value="$(arg scan_observation_persistence)"/>

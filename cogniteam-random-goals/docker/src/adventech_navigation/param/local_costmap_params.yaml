@@ -1,5 +1,5 @@
 local_costmap:
-  global_frame: odom
+  global_frame: map
   robot_base_frame: base_link
   update_frequency: 10.0
   #footprint: '[]'
@@ -36,6 +36,6 @@ local_costmap:
     max_obstacle_height: 0.5
     footprint_padding: 0.01
 
-    observation_sources: laser_scan_sensor realsense scan
-    laser_scan_sensor: {data_type: LaserScan, topic: scan,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
-    scan: {data_type: LaserScan, topic: scan,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
+    observation_sources:   scan
+    #laser_scan_sensor: {data_type: LaserScan, topic: scan_filtered,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }
+    scan: {data_type: LaserScan, topic: scan_filtered,  observation_persistence: 1.0,  marking: true, clearing: true, expected_update_rate: 10.0 }

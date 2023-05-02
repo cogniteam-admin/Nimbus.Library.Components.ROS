@@ -17,19 +17,16 @@ obstacle_layer:
   track_unknown_space:  false    #true needed for disabling global path planning through unknown space
   obstacle_range: 50.0
   raytrace_range: 5.0
-  observation_sources:  scan bump
-  scan:
+  observation_sources:  laserscan
+  laserscan:
     data_type: LaserScan
-    topic: scan
+    topic: /scan_filtered
     marking: true
     clearing: true
-  bump:
-    data_type: PointCloud2
-    topic: mobile_base/sensors/bumper_pointcloud
-    marking: true
-    clearing: true
-  # for debugging only, let's you see the entire voxel grid
+    min_obstacle_height: 0.01
+    max_obstacle_height: 0.4
 
+ 
 #cost_scaling_factor and inflation_radius were now moved to the inflation_layer ns
 inflation_layer:
   enabled:              true
