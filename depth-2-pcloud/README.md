@@ -6,11 +6,6 @@
 * Supported architectures <b>amd64/arm64</b>
 * ROS version <b>melodic</b>
 
-
-# Component
-Image of the component in nimbus
-Link to component in nimbus hub
-
 # Short description
 * convert depth img (with float data) to point cloud
 
