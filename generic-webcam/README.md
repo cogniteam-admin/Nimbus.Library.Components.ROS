@@ -15,7 +15,6 @@ Link to component in nimbus hub
 # Short description
 * A ROS Driver for V4L USB Cameras
 This package is based off of V4L devices specifically instead of just UVC.
-
 For full documentation, <a href="https://wiki.ros.org/usb_cam">see the ROS wiki.</a>
 
 # Example usage
