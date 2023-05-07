@@ -19,7 +19,7 @@ This package is based off of V4L devices specifically instead of just UVC.
 
 # Example usage
 ```
-docker run -it cognimbus/amcl roslaunch usb_cam_clear.launch
+docker run -it cognimbus/usb-cam:latest roslaunch usb_cam_clear.launch
 ```
 
 
