@@ -13,7 +13,10 @@ Image of the component in nimbus
 Link to component in nimbus hub
 
 # Short description
-* amcl is a probabilistic localization system for a robot moving in 2D. It implements the adaptive (or KLD-sampling) Monte Carlo localization approach (as described by Dieter Fox), which uses a particle filter to track the pose of a robot against a known map
+* A ROS Driver for V4L USB Cameras
+This package is based off of V4L devices specifically instead of just UVC.
+
+For full documentation, <a href="https://wiki.ros.org/usb_cam">see the ROS wiki.</a>
 
 # Example usage
 ```
