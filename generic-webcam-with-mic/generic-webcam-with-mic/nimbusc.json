@@ -22,14 +22,10 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "cognimbus/usb-cam:latest",
+      "image": "cognimbus/generic-webcam-with-mic:latest",
       "containerId": "",
       "imageSize": 0,
       "commands": [
-        "stdbuf",
-        "-i0",
-        "-e0",
-        "-o0",
         "roslaunch",
         "usb_cam_clear.launch",
         "width:=${width}",
@@ -40,10 +36,15 @@
         "io_method:=${io_method}",
         "frame_id:=${camera.name}"
       ],
-      "privileged": false,
+      "privileged": true,
       "gpu": false,
       "networkHost": false,
-      "binds": []
+      "binds": [
+        {
+          "source": "/dev/snd",
+          "target": "/dev/snd"
+        }
+      ]
     },
     "log": "",
     "convertedCommands": "",
