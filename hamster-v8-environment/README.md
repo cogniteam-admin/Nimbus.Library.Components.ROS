@@ -1,6 +1,6 @@
-# Hamster Wandering
+# Hamster v8 Environment
 
-<img src="./hamster-wandering/nimbusc.png" alt="hamster" width="400"/>
+<img src="./hamster-b8-environment/nimbusc.png" alt="hamster" width="400"/>
 
 * Supported architectures <b>ard64</b>
 * ROS version <b>melodic</b>
