@@ -1,11 +1,17 @@
 # Hamster Wandering
 
-<img src="./hamster-wandering/nimbusc.png" alt="hamster" width="400"/>
+<img src="./hamster-wandering/amcl.png" alt="amcl" width="400"/>
 
-* Supported architectures <b>ard64</b>
+* Dockerhub image https://hub.docker.com/r/cognimbus/hamster-wandering
+* Supported architectures <b>arm64</b>
 * ROS version <b>melodic</b>
 
 # Short description
-* Complete environemt for Cogniteam's Hamster v8 with all necessary packages
+* Wandering algorithm for Cogniteam's Hamster. The algorithm drives autonomusly at the environment
+
+# Example usage
+```
+docker run -it cognimbus/hamster-wandering
+```
 
 
