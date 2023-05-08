@@ -1,6 +1,6 @@
 # Hamster Wandering
 
-<img src="./hamster-wandering/amcl.png" alt="amcl" width="400"/>
+<img src="./hamster-wandering/nimbusc.png" alt="hamster" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/hamster-wandering
 * Supported architectures <b>arm64</b>
