@@ -13,9 +13,12 @@ Link to component in nimbus hub
 
 # Short description
 * Text to speech from audio_common, gets string, output sound.
+* To publish an audio message use topic /msg_to_play
+
 # Example usage
 ```
 docker run -it cognimbus/audio_say roslaunch ros_audio_launch say_string.launch
 ```
 
-
+# Throubleshoot
+* If there is no sound check the audio settings 
