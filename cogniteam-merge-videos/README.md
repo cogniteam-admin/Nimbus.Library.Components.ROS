@@ -12,7 +12,7 @@ Image of the component in nimbus
 Link to component in nimbus hub
 
 # Short description
-* merge 4/2 video into one video stream.
+* merge 4/2 videos topic into one video topic.
 
 # Example usage
 ```
