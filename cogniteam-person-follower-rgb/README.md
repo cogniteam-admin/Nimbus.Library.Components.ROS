@@ -16,7 +16,7 @@ Link to component in nimbus hub
 
 # Example usage
 ```
-docker run -it cognimbus/person-follower:latest roslaunch person_follower_rgb person_follower_rgb.launch
+docker run -it cognimbus/person_follower_rgb_camera:latest roslaunch person_follower_rgb person_follower_rgb.launch
 ```
 
 
