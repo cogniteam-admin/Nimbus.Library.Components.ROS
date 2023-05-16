@@ -2,7 +2,7 @@
 
 <img src="./image-republisher/Cogniteam_CMYK_Social_white_on_aubergine.jpg" alt="image-republisher" width="400"/>
 
-* Dockerhub image https://hub.docker.com/r/cognimbus/hokuyo
+* Dockerhub image https://hub.docker.com/r/cognimbus/image-republisher
 * Supported architectures <b>amd64</b>
 * ROS version <b>melodic</b>
 
@@ -16,7 +16,7 @@ Link to component in nimbus hub
 
 # Example usage
 ```
-docker run -it cognimbus/amcl roslaunch img_republisher img_republisher.launch
+docker run -it cognimbus/image-republisher roslaunch img_republisher img_republisher.launch
 
 ```
 
