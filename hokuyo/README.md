@@ -13,7 +13,7 @@ Image of the component in nimbus
 Link to component in nimbus hub
 
 # Short description
-* "Hokuyo hokuyo utm-30lx driver
+* Hokuyo hokuyo utm-30lx driver
 
 # Example usage
 ```
