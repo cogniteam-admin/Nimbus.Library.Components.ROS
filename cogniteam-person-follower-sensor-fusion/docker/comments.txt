@@ -1,3 +1,0 @@
-the git repo:
-
-https://github.com/cognimbus/person_follower_sensor_fusion
