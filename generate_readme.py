@@ -194,17 +194,19 @@ def generate_library_reademe():
     repos.remove('arducam-jetson')                 # No docker file
     repos.remove('cogniteam-anomaly-detection')    # No docker image
     repos.remove('cogniteam-coverage-exploration') # No docker file
+    repos.remove('custom-ros-service')             # No "commands" section in json file
     repos.remove('hamster-driver')                 # No "binds" section in json file for hamster simulation repo
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('hector-mapping')                 # No base_frame parameter in "hector-mapping-hd" json
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('jetson-isaac-skeleton')          # No "parameters section in json file"
-    # repos.remove('nextVision_cam')                 # image is missing
     repos.remove('odom-republisher')               # No docker directory
+    repos.remove('orb2-slam')                      # No "prameters" section in josn file
     repos.remove('openvino')                       # No docker file
     repos.remove('ouster-driver')                  # No docker directory
     repos.remove('ros-tutorials-listener')         # No docker directory
     repos.remove('ros-tutorials-talker')           # No docker directory, no image
+    repos.remove('server-service-example')         # No "parameters" section in json file
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
     repos.remove('vosk-speech-to-text')            # Need to add "commands" section at the json file
 
