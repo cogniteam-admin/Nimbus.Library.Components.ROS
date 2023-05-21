@@ -186,46 +186,27 @@ def generate_library_reademe():
     repos.remove('turtlebot3')
     repos.remove('velodyne-vlp-16')
     repos.remove('ydlidar-tg30')
+    repos.remove('sick-safety-nanoscan3')
+    repos.remove('omron-ld60-driver')
 
-    repos.remove('openvino')                       # No docker file
     repos.remove('.filter_only_updated_items.py')  # Unknown
     repos.remove('client-service-example')         # no "parameters" section in json file
     repos.remove('cogniteam-anomaly-detection')    # No docker image
     repos.remove('cogniteam-coverage-exploration') # No docker file
-    repos.remove('hamster-driver')                  # No "binds" section in json file
+    repos.remove('hamster-driver')                 # No "binds" section in json file for hamster simulation repo
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('hector-mapping')                 # No base_frame parameter in "hector-mapping-hd" json
     #hands_pose_decetor dir name should be changed hand_pose_detection
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('jetson-isaac-skeleton')          # No "parameters section in json file"
-    repos.remove('joystick-teleop-twist')          # inner folder name should be changed to joystick-teleop-twist, image is missing
-    repos.remove('kobuki-driver')                  # Inner folder name should be changed to kobuki-driver
-    repos.remove('mir-driver')                     # Inner folder name should be changed to mir-driver
-    repos.remove('nextVision_cam')                 # image is missing
+    # repos.remove('nextVision_cam')                 # image is missing
     repos.remove('odom-republisher')               # No docker directory
-    repos.remove('omron-ld60-driver')              # Inner folder name shoud be changed to omron-ld60-driver
-    repos.remove('orb2-slam')                      # Inner folder name should be chamged to orb2-slam
+    repos.remove('openvino')                       # No docker file
     repos.remove('ouster-driver')                  # No docker directory
-    repos.remove('ros-deep-learning-jetson-inference')  # Inner folder name should be changed to ros-deep-learning-jetson-inference
     repos.remove('ros-tutorials-listener')         # No docker directory
     repos.remove('ros-tutorials-talker')           # No docker directory, no image
-    repos.remove('sick-safety-nanoscan3')          # Inner folder name should be changed to sick-safety-nanoscan3
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
-    repos.remove('ubiquity-driver')                # Outer folder name should be changed to magni-driver
-    repos.remove('vosk-speech-to-text')            # Need to add commands section at the json file
-
-    # Done
-    repos.remove('custom-message-talker-listener') # No images
-    repos.remove('custom-ros-service')             # No images
-    repos.remove('ros1-gateway-arm32')             # No image 
-    repos.remove('ros1-gateway-launch')            # No image 
-    repos.remove('server-service-example')         # No image
-    repos.remove('stm-remote-burn')                # No image
-
-
-
-
-
+    repos.remove('vosk-speech-to-text')            # Need to add "commands" section at the json file
 
     for repo in sorted(repos):
         print(repo)
