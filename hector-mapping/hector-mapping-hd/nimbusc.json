@@ -152,6 +152,13 @@
         "Category": "Static",
         "node": "",
         "stringValue": "map"
+      },
+      {
+        "name": "base_frame",
+        "description": "The name of the base frame of the robot. This is the frame used for localization and for transformation of laser scan data.",
+        "Category": "Static",
+        "node": "",
+        "stringValue": "base_link"
       }
     ]
   },
