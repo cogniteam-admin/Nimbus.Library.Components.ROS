@@ -178,7 +178,7 @@ def generate_library_reademe():
     repos.remove('deegoo-fpv-gps')                 # name param taken from device info
     repos.remove('generic-webcam')
     repos.remove('generic-webcam-with-mic')
-    repos.remove('hokuyo-driver')
+    repos.remove('hokuyo')
     repos.remove('lsd-lidar-c16')
     repos.remove('realsense-camera')
     repos.remove('rtsp-camera')
@@ -190,13 +190,13 @@ def generate_library_reademe():
     repos.remove('omron-ld60-driver')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    repos.remove('client-service-example')         # no "parameters" section in json file
+    repos.remove('client-service-example')         # No "parameters" section in json file
+    repos.remove('arducam-jetson')                 # No docker file
     repos.remove('cogniteam-anomaly-detection')    # No docker image
     repos.remove('cogniteam-coverage-exploration') # No docker file
     repos.remove('hamster-driver')                 # No "binds" section in json file for hamster simulation repo
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('hector-mapping')                 # No base_frame parameter in "hector-mapping-hd" json
-    #hands_pose_decetor dir name should be changed hand_pose_detection
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('jetson-isaac-skeleton')          # No "parameters section in json file"
     # repos.remove('nextVision_cam')                 # image is missing
