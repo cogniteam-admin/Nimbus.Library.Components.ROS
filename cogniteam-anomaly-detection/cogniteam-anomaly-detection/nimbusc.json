@@ -22,13 +22,13 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "example",
+      "image": "cogniteam-anomaly-detection",
       "containerId": "",
       "imageSize": 0,
       "commands": [
         "roslaunch",
-        "algorithms",
-        "algorithms.launch"
+        "anomaly_detection_launch",
+        "train.launch"
       ],
       "privileged": false,
       "gpu": false,
