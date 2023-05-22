@@ -25,6 +25,11 @@
             "image": "cognimbus/vosk-speech-to-text:latest",
             "containerId": "",
             "imageSize": 0,
+            "commands": [
+                "roslaunch",
+                "ros_vosk",
+                "ros_vosk.launch"
+            ],
             "privileged": true,
             "gpu": false,
             "networkHost": false,

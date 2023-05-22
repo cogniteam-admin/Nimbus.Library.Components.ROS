@@ -8,61 +8,67 @@ def generate_headline(repo_name:str):
     return f"# {repo_name.title()}"
 
 
+# This method generates a link to the repo image
 def generate_img_src(dir_path, repo_name):
     try:
-        files = os.listdir(os.path.join(dir_path, repo_name))
-        files.remove('nimbusc.json')
-        img_name = files[0]
-        return f"<img src=\"./{repo_name}/{img_name}\" alt=\"{repo_name}\" width=\"400\"/>"
+        files = os.listdir(os.path.join(dir_path, repo_name))                                # list the files at the repo nimbus directory
+        files.remove('nimbusc.json')                                                         # Remove the nimbus json file from the list (folder contains a json and an image)
+        img_name = files[0]                                                                  # Extract the image's name
+        return f"<img src=\"./{repo_name}/{img_name}\" alt=\"{repo_name}\" width=\"400\"/>"  # Return the link to the image
     except Exception as e:
         print('Error while trying to generate image link')
         print(str(e))
 
 
+# This method extract the docker image name from the nimbus json file
 def extract_image_from_json(dir_path, repo_name):
     try:
-        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')
-        json_content = json.load(json_file)
-        docker_image = json_content['environment']['dockerInfo']['image'].split(':')[0]    
-        return docker_image
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)                                             # Load the json content
+        docker_image = json_content['environment']['dockerInfo']['image'].split(':')[0] # Extract the docker image name from the json file   
+        return docker_image                                                             # Return the docker image name
     except Exception as e:
         print("Error while trying to extract docker image from json file")
         print(str(e))
 
 
+# This method returns a link to the docker hub image url
 def generate_dockerhub_image(dir_path, repo_name):
         docker_image = extract_image_from_json(dir_path, repo_name)
         return f"* Dockerhub image https://hub.docker.com/r/{docker_image}"
 
 
+# This method extract the supported architecture of the docker image from the docker hub api
 def generate_supported_arch(dir_path, repo_name):
     try:
-        image_name = extract_image_from_json(dir_path, repo_name)
-        registry_url = "https://hub.docker.com/v2/repositories"
-        tags_endpoint = f"{registry_url}/{image_name}/tags"
-        response = requests.get(tags_endpoint)
+        image_name = extract_image_from_json(dir_path, repo_name)                                           # Extract the docker image name from json file
+        registry_url = "https://hub.docker.com/v2/repositories"                                             # Docker hub api registry
+        tags_endpoint = f"{registry_url}/{image_name}/tags"                                                 # Docker hub api endpoint for the relevant image
+        response = requests.get(tags_endpoint)                                                              # Send request to docker hub api
         
         if response.status_code != 200:
             raise Exception(f"Failed to retrieve tags for image '{image_name}'. Error: {response.text}")
         
-        images = response.json()['results'][0]['images']
-        architectures = [image['architecture'] for image in images]
-        return f"* Supported architectures <b>{'/'.join(architectures)}</b>"
+        images = response.json()['results'][0]['images']                                                    # Extract image's list
+        architectures = [image['architecture'] for image in images]                                         # Extract image's architectures
+        return f"* Supported architectures <b>{'/'.join(architectures)}</b>"                                # Return supported architecture string with relevant architectures
     except Exception as e:
         print('Error while trying to extract architectures from docker hub')
         print(str(e))
 
 
+# This method extracts the ros version of the component from the docker file
 def generate_ros_version(dir_path, repo_name):
     try:
         docker_file = open(os.path.join(dir_path, 'docker', 'Dockerfile'), 'r')
-        ros_version = docker_file.read().split('\n')[0].split(':')[-1]
+        ros_version = docker_file.readline().split(':')[-1]
         return  f"* ROS version <b>{ros_version}</b>"
     except Exception as e:
         print('Error while trying to extract ros version from Dockerfile')
         print(str(e))
 
 
+# This method extract the description from the json file and return description string for readme
 def generate_description(dir_path, repo_name):
     try:
         json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')
@@ -73,6 +79,7 @@ def generate_description(dir_path, repo_name):
         print('Error while trying to extract description from json file')
         print(str(e))
 
+# This method extract the roslaunch arguments from the json file parameters section
 def extract_launch_arguments(params):
     args = {}
     for param in params:
@@ -82,69 +89,56 @@ def extract_launch_arguments(params):
 
 def generate_roslaunch(commands, params):
     launch_args = extract_launch_arguments(params)
-    pattern = r"\{(.*?)\}"  # regular expression pattern to match content inside curly braces
+    pattern = r"\{(.*?)\}"                              # Regular expression pattern to match content inside curly braces
     for i in range(len(commands)):
-        match = re.search(pattern, commands[i])
+        match = re.search(pattern, commands[i])         # Search for string with a matching pattern
         if match:
             content = match.group(1)
-            commands[i] = f"{content}:={launch_args[content]}"
+            commands[i] = f"{content}:={launch_args[content]}"  # Replace the arg from json file with the parameter's default value
     return commands
 
+# This method extract docker's -v flag for mounts based on the binds section in the nimbus josn file
 def extract_binds(binds):
     if len(binds) == 0:
         return ''
+    
     string = ""
-
     for bind in binds:
         string += f"-v {bind['source']}:{bind['target']}"
         string += ' '
     return string
 
+# This method generate's example usage of how to run the docker image
 def generate_example_usage(dir_path, repo_name):
     # TODO: gpu, runtime
     flags = {'privileged':'--privileged', 'networkHost':'--network=host', 'runtime':'--runtime'}
     try:
-        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')
-        json_content = json.load(json_file)
-        commands = json_content['environment']['dockerInfo']['commands']
-        params = json_content['parameters']['parameters']
-        commands = generate_roslaunch(commands, params)
-        example = f"# Example usage\n```\ndocker run -it "
-        docker_info = json_content['environment']['dockerInfo']
-
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)                                             # Load the file's content
+        commands = json_content['environment']['dockerInfo']['commands']                # Extract the commands from the json file
+        params = json_content['parameters']['parameters']                               # Extract the parameters from the json file
+        commands = generate_roslaunch(commands, params)                                 # generate roslaunch command
+        example = f"# Example usage\n```\ndocker run -it "                              # Head of the example usage string
+        docker_info = json_content['environment']['dockerInfo']                         # Extract the docker info from the json file
+        
+        # Iterate over the docker flags
         for flag in flags.keys():
             try:
+                # if the flag is set to true at json file, add it to the example usage
                 if docker_info[flag]:
                     example += flags[flag] + ' '
             except:
                 pass
-                # print(f'No {flag} flag for component {repo_name}')
 
-        example += extract_binds(docker_info['binds'])
-        
-        return f"{example}cognimbus/{repo_name} {' '.join(commands)}\n```"
+        example += extract_binds(docker_info['binds'])                                  # Add mounts to docker run coomand (if necessary)
+
+        return f"{example}cognimbus/{repo_name} {' '.join(commands)}\n```"              # Return example usage string
     except Exception as e:
         print("Error while trying to extract commands from json file")
         print(str(e))
 
 
 def generate_repo_readme(dir_path, repo_name):
-    # f = open(os.path.join(dir_path, repo_name, 'README.md'), 'w')
-    # f.write(generate_headline(repo_name))
-    # f.write('\n\n')
-    # f.write(generate_img_src(dir_path, repo_name))
-    # f.write('\n\n')
-    # # TODO: ROS project page
-    # f.write(generate_dockerhub_image(dir_path, repo_name))
-    # f.write('\n')
-    # f.write(generate_supported_arch(dir_path, repo_name))
-    # f.write('\n')
-    # f.write(generate_ros_version(dir_path, repo_name))
-    # f.write('\n\n')
-    # f.write(generate_description(dir_path, repo_name))
-    # f.write('\n\n')
-    # f.write(generate_example_usage(dir_path, repo_name))
-
     readme = ""
     readme += generate_headline(repo_name)
     readme += '\n\n'
@@ -190,25 +184,25 @@ def generate_library_reademe():
     repos.remove('omron-ld60-driver')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    repos.remove('client-service-example')         # No "parameters" section in json file
-    repos.remove('arducam-jetson')                 # No docker file
+    # repos.remove('client-service-example')         # No "parameters" section in json file
+    # repos.remove('arducam-jetson')                 # No docker file
     repos.remove('cogniteam-anomaly-detection')    # No docker image
-    repos.remove('cogniteam-coverage-exploration') # No docker file
+    # repos.remove('cogniteam-coverage-exploration') # No docker file
     repos.remove('custom-ros-service')             # No "commands" section in json file
-    repos.remove('hamster-driver')                 # No "binds" section in json file for hamster simulation repo
+    # repos.remove('hamster-driver')                 # No "binds" section in json file for hamster simulation repo
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
-    repos.remove('hector-mapping')                 # No base_frame parameter in "hector-mapping-hd" json
+    # repos.remove('hector-mapping')                 # No base_frame parameter in "hector-mapping-hd" json
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
-    repos.remove('jetson-isaac-skeleton')          # No "parameters section in json file"
-    repos.remove('odom-republisher')               # No docker directory
-    repos.remove('orb2-slam')                      # No "prameters" section in josn file
-    repos.remove('openvino')                       # No docker file
-    repos.remove('ouster-driver')                  # No docker directory
-    repos.remove('ros-tutorials-listener')         # No docker directory
-    repos.remove('ros-tutorials-talker')           # No docker directory, no image
-    repos.remove('server-service-example')         # No "parameters" section in json file
+    # repos.remove('jetson-isaac-skeleton')          # No "parameters" section in json file
+    # repos.remove('odom-republisher')               # No docker directory
+    # repos.remove('orb2-slam')                      # No "prameters" section in josn file
+    # repos.remove('openvino')                       # No docker file
+    # repos.remove('ouster-driver')                  # No docker directory
+    # repos.remove('ros-tutorials-listener')         # No docker directory
+    # repos.remove('ros-tutorials-talker')           # No docker directory, no image
+    # repos.remove('server-service-example')         # No "parameters" section in json file
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
-    repos.remove('vosk-speech-to-text')            # Need to add "commands" section at the json file
+    # repos.remove('vosk-speech-to-text')            # Need to add "commands" section at the json file
 
     for repo in sorted(repos):
         print(repo)
