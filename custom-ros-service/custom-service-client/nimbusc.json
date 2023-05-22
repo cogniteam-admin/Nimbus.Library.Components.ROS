@@ -40,7 +40,7 @@
     "convertedCommands": "",
     "onExit": "IGNORE"
   },
-  "paramters": {
+  "parameters": {
     "parameters": []
   },
   "state": "COMPONENT_STATE_UNLOADED",
