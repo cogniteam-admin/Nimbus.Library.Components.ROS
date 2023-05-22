@@ -22,7 +22,7 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "cogniteam-anomaly-detection",
+      "image": "cognimbus/cogniteam-anomaly-detection",
       "containerId": "",
       "imageSize": 0,
       "commands": [
