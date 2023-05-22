@@ -40,6 +40,9 @@
     "convertedCommands": "",
     "onExit": "IGNORE"
   },
+  "paramters": {
+    "parameters": []
+  },
   "state": "COMPONENT_STATE_UNLOADED",
   "message": "",
   "streams": {
