@@ -1,1 +1,0 @@
-https://github.com/cognimbus/nimbus.component.map_coverage_exploration
