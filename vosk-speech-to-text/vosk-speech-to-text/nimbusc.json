@@ -45,6 +45,7 @@
     "state": "COMPONENT_STATE_UNLOADED",
     "message": "",
     "streams": {
+        "inputStreams": [],
         "outputStreams": [
             {
                 "name": "text_from_speech",
