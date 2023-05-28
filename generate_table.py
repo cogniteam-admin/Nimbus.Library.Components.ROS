@@ -6,10 +6,10 @@ def get_repo_url(repo_name):
 # This method generates a link to the repo image
 def generate_img_src(dir_path, repo_name, dir_name):
     try:
-        files = os.listdir(os.path.join(dir_path, repo_name))                                # list the files at the repo nimbus directory
-        files.remove('nimbusc.json')                                                         # Remove the nimbus json file from the list (folder contains a json and an image)
-        img_name = files[0]                                                                  # Extract the image's name
-        return f"<img src=\"./{repo_name}/{dir_name}/{img_name}\" alt=\"{repo_name}\" width=\"40\"/>"   # Return the link to the image
+        files = os.listdir(os.path.join(dir_path, repo_name, dir_name))                                      # list the files at the repo nimbus directory
+        files.remove('nimbusc.json')                                                                    # Remove the nimbus json file from the list (folder contains a json and an image)
+        img_name = files[0]                                                                             # Extract the image's name
+        return f"<img src=\"./{repo_name}/{dir_name}/{img_name}\" alt=\"{dir_name}\" width=\"40\"/>"   # Return the link to the image
     except Exception as e:
         print('Error while trying to generate image link')
         print(str(e))
@@ -46,9 +46,8 @@ def generate_table():
                 pass
         
         for dir in dirs:
-            table += f'{generate_img_src(repo_dir_path, repo, dir)} | {repo} | {get_repo_url(repo)}\n'
+            table += f'{generate_img_src(library_dir_path, repo, dir)} | {repo} | {get_repo_url(dir)}\n'
         
-    print(table)
     f.write(table)
     
 generate_table()
