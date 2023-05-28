@@ -40,7 +40,7 @@
         "io_method:=${io_method}",
         "frame_id:=${camera.name}"
       ],
-      "privileged": false,
+      "privileged": true,
       "gpu": false,
       "networkHost": false,
       "binds": []
