@@ -13,6 +13,32 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/ouster-driver sensor_hostname:=192.168.1.22
+docker run -it --network=host cognimbus/ros1-ouster-driver sensor_hostname:=192.168.1.22
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/ouster/nearir_image | sensor_msgs/Image
+/ouster/range_image | sensor_msgs/Image
+/ouster/signal_image | sensor_msgs/Image
+/ouster/reflec_image | sensor_msgs/Image
+/ouster/range_image2 | sensor_msgs/Image
+/ouster/signal_image2 | sensor_msgs/Image
+/ouster/imu | sensor_msgs/Imu
+/ouster/points | sensor_msgs/PointCloud2
+/ouster/points2 | sensor_msgs/PointCloud2
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

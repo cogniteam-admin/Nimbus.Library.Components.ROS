@@ -1,24 +1,38 @@
-# Generic Webcam
+# Generic-Webcam-With-Mic
 
-<img src="generic-webcam-with-mic/generic-webcam-driver.jpg" alt="generic-webcam" width="400"/>
+<img src="./generic-webcam-with-mic/generic-webcam-driver.jpg" alt="generic-webcam-with-mic" width="400"/>
 
-* ROS project page <a href="http://wiki.ros.org/audio_common">http://wiki.ros.org/audio_common</a>
 * Dockerhub image https://hub.docker.com/r/cognimbus/generic-webcam-with-mic
-* Supported architectures <b>amd64/arm64</b>
-* ROS version <b>noetic</b>
-
-
-# Component
-Image of the component in nimbus
-Link to component in nimbus hub
+* Supported architectures <b>arm64/amd64</b>
+* ROS version <b>noetic
+</b>
 
 # Short description
-* Provides code to capture audio from a microphone and transport it to a destination for playback, and The usb_cam_node interfaces with standard USB cameras.
-
+* Generic webcam driver
+License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/generic-webcam-with-mic:latest roslaunch usb_cam_clear.launch
+docker run -it --network=host --privileged -v /dev/snd:/dev/snd cognimbus/generic-webcam-with-mic:latest roslaunch usb_cam_clear.launch width:=640 quality:=40 height:=480 fps:=15 pixel_format:=yuyv io_method:=userptr frame_id:=camera
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/usb_cam/image_raw/compressed | sensor_msgs/CompressedImage
+/usb_cam/image_raw | sensor_msgs/Image
+/audio/audio | audio_common_msgs/AudioData
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
 
 

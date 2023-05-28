@@ -13,6 +13,26 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/novatel-gps roslaunch novatel_oem7_driver oem7_net.launch ip_address:=192.168.74.10 port:=6002 oem7_if:=Oem7ReceiverUdp
+docker run -it --network=host cognimbus/novatel-gps roslaunch novatel_oem7_driver oem7_net.launch oem7_ip_addr:=192.168.74.10 oem7_port:=6002 oem7_if:=Oem7ReceiverUdp
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/novatel/oem7/odom | nav_msgs/Odometry
+/gps/imu | sensor_msgs/Imu
+/gps/fix | sensor_msgs/NavSatFix
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

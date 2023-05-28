@@ -14,6 +14,26 @@ License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/razor-imu roslaunch razor_imu_m0_driver driver_node.launch --screen
+docker run -it --network=host cognimbus/razor-imu roslaunch razor_imu_m0_driver driver_node.launch --screen
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/imu/data | sensor_msgs/Imu
+/imu/data_raw | sensor_msgs/Imu
+/imu/mag | sensor_msgs/MagneticField
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

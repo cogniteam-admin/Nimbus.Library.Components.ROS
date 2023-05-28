@@ -13,6 +13,29 @@ License: GPL
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/imu-filter-madgwick roslaunch imu_filter_madgwick imu_filter_madgwick.launch
+docker run -it --network=host --privileged cognimbus/imu_tools roslaunch imu_filter_madgwick imu_filter_madgwick.launch
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/imu/data_raw | sensor_msgs/Imu
+/imu/mag | sensor_msgs/MagneticField
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/ImuFilterNodelet/parameter_descriptions | dynamic_reconfigure/ConfigDescription
+/ImuFilterNodelet/parameter_updates | dynamic_reconfigure/Config
+/imu/data | sensor_msgs/Imu
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

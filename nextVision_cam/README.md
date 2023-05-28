@@ -13,6 +13,24 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --privileged --network=host cognimbus/nextVision_cam roslaunch next_vision_cam next_vision.launch IP:=192.168.0.20 Port:=10024
+docker run -it --network=host --privileged cognimbus/ros1-nextvision-cam roslaunch next_vision_cam next_vision.launch ip:=192.168.0.20 port:=10024
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/next_vision_cam/cmd_vel | Twist
+
+
+# Publishers
+This node has no publishers
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

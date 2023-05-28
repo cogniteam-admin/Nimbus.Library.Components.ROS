@@ -94,7 +94,11 @@ def generate_roslaunch(commands, params):
         match = re.search(pattern, commands[i])         # Search for string with a matching pattern
         if match:
             content = match.group(1)
-            commands[i] = f"{content}:={launch_args[content]}"  # Replace the arg from json file with the parameter's default value
+            arg_name = commands[i].split(':')[0]
+            if '.' in content:
+                commands[i] = f"{arg_name}:={content.split('.')[0]}"
+            else:
+                commands[i] = f"{arg_name}:={launch_args[content]}"  # Replace the arg from json file with the parameter's default value
     return commands
 
 # This method extract docker's -v flag for mounts based on the binds section in the nimbus josn file
@@ -111,15 +115,16 @@ def extract_binds(binds):
 # This method generate's example usage of how to run the docker image
 def generate_example_usage(dir_path, repo_name):
     # TODO: gpu, runtime
-    flags = {'privileged':'--privileged', 'networkHost':'--network=host', 'runtime':'--runtime'}
+    flags = {'privileged':'--privileged', 'runtime':'--runtime'}
     try:
         json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
         json_content = json.load(json_file)                                             # Load the file's content
         commands = json_content['environment']['dockerInfo']['commands']                # Extract the commands from the json file
         params = json_content['parameters']['parameters']                               # Extract the parameters from the json file
         commands = generate_roslaunch(commands, params)                                 # generate roslaunch command
-        example = f"# Example usage\n```\ndocker run -it "                              # Head of the example usage string
+        example = f"# Example usage\n```\ndocker run -it --network=host "               # Head of the example usage string
         docker_info = json_content['environment']['dockerInfo']                         # Extract the docker info from the json file
+        docker_image = json_content['environment']['dockerInfo']['image']
         
         # Iterate over the docker flags
         for flag in flags.keys():
@@ -132,10 +137,107 @@ def generate_example_usage(dir_path, repo_name):
 
         example += extract_binds(docker_info['binds'])                                  # Add mounts to docker run coomand (if necessary)
 
-        return f"{example}cognimbus/{repo_name} {' '.join(commands)}\n```"              # Return example usage string
+        return f"{example}{docker_image} {' '.join(commands)}\n```"              # Return example usage string
     except Exception as e:
         print("Error while trying to extract commands from json file")
         print(str(e))
+
+def check_topic(streams):
+    for stream in streams:
+        if 'rosTopic' in stream:
+            return True
+    return False
+
+
+def genreate_sub_table(dir_path, repo_name):
+    try:
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)
+        subs = json_content['streams']['inputStreams']
+        sub_table = '# Subscribers\n'
+        if not check_topic(subs):
+            return sub_table + "This node has no subscribers\n"
+        sub_table += "ROS topic | type\n--- | ---\n"
+        for sub in subs:
+            try:
+                topic = sub['rosTopic']['topic']
+                type = sub['rosTopic']['type'].split('.')
+                type = '/'.join(type[1:])
+                sub_table += f'{topic} | {type}\n'
+            except:
+                pass
+        return sub_table
+    except Exception as e:
+        print('Error while trying to extract subscribers table from json')
+
+def genreate_pub_table(dir_path, repo_name):
+    try:
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)
+        pubs = json_content['streams']['outputStreams']
+        pub_table = '# Publishers\n'
+        if not check_topic(pubs):
+            return pub_table + "This node has no publishers\n"
+        pub_table += "ROS topic | type\n--- | ---\n"
+        for pub in pubs:
+            try:
+                topic = pub['rosTopic']['topic']
+                type = pub['rosTopic']['type'].split('.')
+                type = '/'.join(type[1:])
+                pub_table += f'{topic} | {type}\n'
+            except:
+                pass
+        return pub_table
+    except Exception as e:
+        print('Error while trying to extract subscribers table from json')
+        print(str(e))
+
+def check_tf(streams):
+    for stream in streams:
+        if 'rosTf' in stream:
+            return True
+    return False
+
+def generate_req_tf(dir_path, repo_name):
+    try:
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)
+        streams = json_content['streams']['inputStreams']
+        req_tf = '# Required tf\n'
+        if not check_tf(streams):
+            return req_tf + "This node does not require tf\n"
+        for stream in streams:
+            try:
+                base_frame = stream['rosTf']['baseFrame']
+                child_frame = stream['rosTf']['childFrame']
+                req_tf += f'{base_frame}--->{child_frame}\n'
+            except:
+                pass
+        return req_tf
+    except Exception as e:
+        print('Error while trying to extract provided tf')
+        print(str(e))
+
+def generate_provided_tf(dir_path, repo_name):
+    try:
+        json_file = open(os.path.join(dir_path, repo_name, 'nimbusc.json'), 'r')        # Open json file
+        json_content = json.load(json_file)
+        streams = json_content['streams']['outputStreams']
+        prov_tf = '# Provided tf\n'
+        if not check_tf(streams):
+            return prov_tf + "This node does not provide tf\n"
+        for stream in streams:
+            try:
+                base_frame = stream['rosTf']['baseFrame']
+                child_frame = stream['rosTf']['childFrame']
+                prov_tf += f'{base_frame}--->{child_frame}\n'
+            except:
+                pass
+        return prov_tf
+    except Exception as e:
+        print('Error while trying to extract provided tf')
+        print(str(e))
+
 
 
 def generate_repo_readme(dir_path, repo_name):
@@ -154,6 +256,14 @@ def generate_repo_readme(dir_path, repo_name):
     readme += generate_description(dir_path, repo_name)
     readme += '\n\n'
     readme += generate_example_usage(dir_path, repo_name)
+    readme += '\n\n'
+    readme += genreate_sub_table(dir_path, repo_name)
+    readme += '\n\n'
+    readme += genreate_pub_table(dir_path, repo_name)
+    readme += '\n\n'
+    readme += generate_req_tf(dir_path, repo_name)
+    readme += '\n\n'
+    readme += generate_provided_tf(dir_path, repo_name)
     return readme
 
 
@@ -168,24 +278,9 @@ def generate_library_reademe():
     repos.remove('.gitignore')
     repos.remove('.gitlab-ci.yml')
 
-    # device name issue
-    repos.remove('deegoo-fpv-gps')                 # name param taken from device info
-    repos.remove('generic-webcam')
-    repos.remove('generic-webcam-with-mic')
-    repos.remove('hokuyo')
-    repos.remove('lsd-lidar-c16')
-    repos.remove('realsense-camera')
-    repos.remove('rtsp-camera')
-    repos.remove('slamtec-rplidar-driver')
-    repos.remove('turtlebot3')
-    repos.remove('velodyne-vlp-16')
-    repos.remove('ydlidar-tg30')
-    repos.remove('sick-safety-nanoscan3')
-    repos.remove('omron-ld60-driver')
-
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    # repos.remove('cogniteam-anomaly-detection')    # No docker image
-    # repos.remove('custom-ros-service')             # No "commands" section in json file
+    # repos.remove('cogniteam-anomaly-detection')  # No docker image
+    # repos.remove('custom-ros-service')           # No "commands" section in json file
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
@@ -212,6 +307,6 @@ def generate_library_reademe():
 generate_library_reademe()
 
 # library_dir_path = os.path.dirname(__file__)
-# repo_dir_path = os.path.join(library_dir_path, 'hector-mapping')
-# readme = generate_repo_readme(repo_dir_path, 'hector-mapping')
+# repo_dir_path = os.path.join(library_dir_path, 'amcl')
+# readme = generate_repo_readme(repo_dir_path, 'amcl')
 # print(readme)

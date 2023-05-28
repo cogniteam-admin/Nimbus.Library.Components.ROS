@@ -14,6 +14,29 @@ Source: git: https://github.com/cognimbus/nimbus.library/tree/master/Library/Com
 
 # Example usage
 ```
-docker run -it cognimbus/orb2-slam-d435 roslaunch orb_slam2_ros orb_slam2_d435_rgbd.launch
+docker run -it --network=host cognimbus/orb2-slam roslaunch orb_slam2_ros orb_slam2_d435_rgbd.launch
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/camera/depth/image_rect_raw | sensor_msgs/Image
+/camera/color/image_rect_color | sensor_msgs/Image
+/camera/rgb/camera_info | sensor_msgs/CameraInfo
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/orb_slam2_rgbd/pose | geometry_msgs/PoseStamped
+/orb_slam2_rgbd/map_points | sensor_msgs/PointCloud2
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

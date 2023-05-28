@@ -1,22 +1,36 @@
-# Arducam
+# Arducam-Jetson
 
-<img src="./arducam-jeston/arducam.jpg" alt="arducam" width="400"/>
+<img src="./arducam-jetson/arducam.jpg" alt="arducam-jetson" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/arducam-jetson
-* Supported architectures <b>amd64</b>
-* ROS version <b>melodic</b>
-
-
-# Component
-Image of the component in nimbus
-Link to component in nimbus hub
+* Supported architectures <b>arm64</b>
+* ROS version <b>melodic
+</b>
 
 # Short description
 * arducam ROS driver
 
 # Example usage
 ```
-docker run -it --privileged --network host -v /dev/video0:/dev/video0 -v /tmp/argus_socket:/tmp/argus_socket cognimbus/arducam-jetson roslaunch local_camera_driver local_camera_driver.launch
+docker run -it --network=host --privileged -v /dev/video0:/dev/video0 -v /tmp/argus_socket:/tmp/argus_socket cognimbus/arducam-jetson roslaunch local_camera_driver local_camera_driver.launch
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/camera/image | sensor_msgs/Image
+/camera/image/compressed | sensor_msgs/CompressedImage
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
 
 

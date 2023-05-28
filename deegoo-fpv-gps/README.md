@@ -1,24 +1,38 @@
-# Deegpp FPV GPS
+# Deegoo-Fpv-Gps
 
-<img src="./deego-fpv-gps/gps.png" alt="amcl" width="400"/>
+<img src="./deegoo-fpv-gps/gps.jpeg" alt="deegoo-fpv-gps" width="400"/>
 
-* ROS project page <a href="http://wiki.ros.org/amcl">http://wiki.ros.org/amcl</a>
-* Dockerhub image https://hub.docker.com/repository/docker/cognimbus/deegoo-fpv-gps/general
-* Supported architectures <b>amd64, arm64</b>
-* ROS version <b>noetic</b>
-
-
-# Component
-Image of the component in nimbus
-Link to component in nimbus hub
+* Dockerhub image https://hub.docker.com/r/cognimbus/deegoo-fpv-gps
+* Supported architectures <b>arm64/amd64</b>
+* ROS version <b>noetic
+</b>
 
 # Short description
-* ROS driver to parse NMEA strings and publish standard ROS NavSat message types. Does not require the GPSD daemon to be running.
+* deegoo-fpv-gps driver
+License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/amcl roslaunch nmea_navsat_driver nmea_serial_driver.launch baud:=${baud} frame_id:=${gps.name}
-
+docker run -it --network=host cognimbus/deegoo-fpv-gps roslaunch nmea_navsat_driver nmea_serial_driver.launch baud:=9600 frame_id:=gps --screen
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/fix | sensor_msgs/NavSatFix
+/heading | geometry_msgs/QuaternionStamped
+/vel | geometry_msgs/TwistStamped
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
 
 

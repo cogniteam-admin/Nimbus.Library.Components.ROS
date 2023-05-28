@@ -13,8 +13,29 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/openvino-cpu-segmentation bash -ic myriad:=false camera_name:=camera
+docker run -it --network=host --privileged intelpengo/openvino bash -ic roslaunch vino_launch pengo_segmentation.launch myriad:=false camera_name:=camera
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/camera/color/image_raw | sensor_msgs/Image
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/openvino_toolkit/images | sensor_msgs/Image
+/openvino_toolkit/detected_objects | object_msgs/ObjectsInBoxes
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 
 # Openvino-Cpu-Detection
 
@@ -31,8 +52,29 @@ License: Apache 2.0
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/openvino-cpu-detection bash -ic myriad:=false camera_name:=camera
+docker run -it --network=host --privileged intelpengo/openvino bash -ic roslaunch vino_launch pengo_detection.launch myriad:=false camera_name:=camera
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/camera/color/image_raw | sensor_msgs/Image
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/openvino_toolkit/images | sensor_msgs/Image
+/openvino_toolkit/detected_objects | object_msgs/ObjectsInBoxes
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 
 # Openvino-Myriad
 
@@ -49,6 +91,27 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/openvino-myriad bash -ic myriad:=true camera_name:=camera
+docker run -it --network=host --privileged intelpengo/openvino bash -ic roslaunch vino_launch pengo_detection.launch myriad:=true camera_name:=camera
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/camera/color/image_raw | sensor_msgs/Image
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/openvino_toolkit/images | sensor_msgs/Image
+/openvino_toolkit/detected_objects | object_msgs/ObjectsInBoxes
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

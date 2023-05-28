@@ -13,6 +13,24 @@ For safety, before you move your robot with the left stick, hold the X(xbox)/Squ
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/joystick-teleop-twist roslaunch teleop_twist_joy teleop.launch joy_config:=xbox joy_dev:=/dev/input/js0
+docker run -it --network=host --privileged cognimbus/joystick-teleop roslaunch teleop_twist_joy teleop.launch joy_config:=xbox joy_dev:=/dev/input/js0
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/cmd_vel | geometry_msgs/Twist
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

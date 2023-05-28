@@ -1,23 +1,39 @@
-# Cartographer SLAM
+# Cartographer-Slam
 
 <img src="./cartographer-slam/cartographer-slam.png" alt="cartographer-slam" width="400"/>
 
-* Project page <a href="https://google-cartographer-ros.readthedocs.io/en/latest/">https://google-cartographer-ros.readthedocs.io/en/latest/</a>
 * Dockerhub image https://hub.docker.com/r/cognimbus/cartographer-slam
-* Supported architectures <b>amd64/arm64</b>
-* ROS version <b>noetic</b>
-
-
-# Component
-Image of the component in nimbus
-Link to component in nimbus hub
+* Supported architectures <b>arm64/amd64</b>
+* ROS version <b>noetic
+</b>
 
 # Short description
-* Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations. This project provides Cartographer’s ROS integration.
+* Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
 
 # Example usage
 ```
-docker run -it --privileged cognimbus/cartographer-slam roslaunch cartographer_ros my_robot.launch
+docker run -it --network=host cognimbus/cartographer-slam roslaunch cartographer_ros my_robot.launch
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/scan | sensor_msgs/LaserScan
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/map | nav_msgs/OccupancyGrid
+/tracked_pose | geometry_msgs/PoseStamped
+/scan_matched_points2 | sensor_msgs/PointCloud2
+
+
+# Required tf
+odom--->base_link
+
+
+# Provided tf
+This node does not provide tf
 
 

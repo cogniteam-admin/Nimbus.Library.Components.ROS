@@ -12,8 +12,26 @@
 
 # Example usage
 ```
-docker run -it cognimbus/custom-message-listener roslaunch listener listener.launch
+docker run -it --network=host cognimbus/custome-message-tutorial roslaunch listener listener.launch
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/custom_chatter | 
+
+
+# Publishers
+This node has no publishers
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 
 # Custom-Message-Talker
 
@@ -30,6 +48,24 @@ License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/custom-message-talker roslaunch talker talker.launch
+docker run -it --network=host cognimbus/custome-message-tutorial roslaunch talker talker.launch
 ```
+
+# Subscribers
+This node has no subscribers
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/custom_chatter | 
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

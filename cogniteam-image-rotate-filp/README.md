@@ -14,6 +14,27 @@ License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/cogniteam-image-rotate-filp roslaunch image_rotate_filp image_rotate_filp.launch angle_rotation_degrees:=180 flip_both:=false flip_vertical:=false flip_horizontal:=false --screen
+docker run -it --network=host cognimbus/image-rotate-filp roslaunch image_rotate_filp image_rotate_filp.launch angle_rotation_degrees:=180 flip_both:=false flip_vertical:=false flip_horizontal:=false --screen
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/camera/color/image_raw | sensor_msgs/Image
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/out_img/ | sensor_msgs/Image
+/out_img/compressed/ | sensor_msgs/CompressedImage
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

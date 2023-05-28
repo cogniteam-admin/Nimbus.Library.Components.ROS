@@ -14,6 +14,24 @@ License: BSD
 
 # Example usage
 ```
-docker run -it cognimbus/lizi-driver roslaunch lizi_hw lizi_hw.launch --screen
+docker run -it --network=host cognimbus/lizi-driver roslaunch lizi_hw lizi_hw.launch --screen
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/mobile_base/commands/velocity | geometry_msgs/Twist
+
+
+# Publishers
+This node has no publishers
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 

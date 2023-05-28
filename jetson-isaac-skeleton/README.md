@@ -15,6 +15,26 @@ Source: git: https://github.com/cognimbus/nimbus.library/tree/master/Library/Com
 
 # Example usage
 ```
-docker run -it cognimbus/jetson-isaac-skeleton 
+docker run -it --network=host cognimbus/jetson-isaac-skeleton-ros 
 ```
+
+# Subscribers
+ROS topic | type
+--- | ---
+/webcam/image_raw | sensor_msgs/Image
+
+
+# Publishers
+ROS topic | type
+--- | ---
+/skeletons_text | std_msgs/String
+
+
+# Required tf
+This node does not require tf
+
+
+# Provided tf
+This node does not provide tf
+
 
