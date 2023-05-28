@@ -277,10 +277,9 @@ def generate_library_reademe():
     repos.remove('.git')
     repos.remove('.gitignore')
     repos.remove('.gitlab-ci.yml')
+    repos.remove('generate_table.py')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    # repos.remove('cogniteam-anomaly-detection')  # No docker image
-    # repos.remove('custom-ros-service')           # No "commands" section in json file
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
