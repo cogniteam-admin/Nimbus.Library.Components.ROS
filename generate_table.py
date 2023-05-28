@@ -46,7 +46,7 @@ def generate_table():
                 pass
         
         for dir in dirs:
-            table += f'{generate_img_src(library_dir_path, repo, dir)} | {repo} | {get_repo_url(repo)}\n'
+            table += f'{generate_img_src(library_dir_path, repo, dir)} | {dir} | {get_repo_url(repo)}\n'
         
     f.write(table)
     
