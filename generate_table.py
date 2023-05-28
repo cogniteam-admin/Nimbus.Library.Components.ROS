@@ -31,7 +31,7 @@ def generate_table():
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
 
-    f = open(os.path.join(library_dir_path, 'README2.md'), 'w')
+    f = open(os.path.join(library_dir_path, 'README.md'), 'w')
     table = "Image | Component Name | Link\n--- | --- | ---\n"
     for repo in sorted(repos):
         print(repo)
