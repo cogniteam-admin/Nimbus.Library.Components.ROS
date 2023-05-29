@@ -3,7 +3,7 @@
   "type": "COMPONENT_TYPE_COMPONENT",
   "className": "Ros1Component",
   "instanceName": "",
-  "description": "arducam ROS driver",
+  "description": "a driver for arducam device for jetson platform that publish ros image topic",
   "start": "START_MODE_AUTO",
   "environment": {
     "name": "",

@@ -3,7 +3,7 @@
   "type": "COMPONENT_TYPE_COMPONENT",
   "className": "Ros1Component",
   "instanceName": "",
-  "description": "",
+  "description": "ros node that get the odometry from hamster robot, subscribe to the laser-scan msg from the lidar and send ackerman msgs to the robot while avoides obstacles.\nLicense: BSD",
   "start": "START_MODE_AUTO",
   "environment": {
     "name": "",
