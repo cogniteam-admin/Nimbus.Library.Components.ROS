@@ -8,8 +8,9 @@
 </b>
 
 # Short description
-* Rover driver 
-License:  GPL
+* Provides an interface between ros and Rover Robotics rover hardware. Inputs to rr_openrover_driver include emergency stop and velocity commands. It outputs diagnostic data such as encoder readings and battery charge. 
+License: GPL
+GIT:https://github.com/RoverRobotics-archive/rr_openrover_stack.git
 
 # Example usage
 ```

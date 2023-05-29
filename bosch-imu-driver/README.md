@@ -8,7 +8,9 @@
 </b>
 
 # Short description
-* 
+* A driver for the sensor IMU Bosch BNO055. It was implemented only the UART communication interface (correct sensor mode should be selected).
+License: LGPL
+GIT: https://github.com/mdrwiega/bosch_imu_driver: 
 
 # Example usage
 ```

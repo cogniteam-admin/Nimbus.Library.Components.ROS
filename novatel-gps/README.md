@@ -8,8 +8,9 @@
 </b>
 
 # Short description
-* Novatel GPS driver
-License: BSD
+* Novatel GPS driver.
+License: BSD.
+GIT:https://github.com/swri-robotics/novatel_gps_driver.git
 
 # Example usage
 ```

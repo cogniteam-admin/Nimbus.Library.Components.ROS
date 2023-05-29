@@ -8,7 +8,8 @@
 </b>
 
 # Short description
-* 
+* ros node that subscribes to a multiple image topic and merge them to one image and publish it.
+License: BSD
 
 # Example usage
 ```

@@ -8,7 +8,7 @@
 </b>
 
 # Short description
-* Local ROS master gateway
+* ros node for controll the camera gimbal of nexvision.
 License: BSD
 
 # Example usage

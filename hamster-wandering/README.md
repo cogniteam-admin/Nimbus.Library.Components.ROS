@@ -8,7 +8,8 @@
 </b>
 
 # Short description
-* 
+* ros node that get the odometry from hamster robot, subscribe to the laser-scan msg from the lidar and send ackerman msgs to the robot while avoides obstacles.
+License: BSD
 
 # Example usage
 ```

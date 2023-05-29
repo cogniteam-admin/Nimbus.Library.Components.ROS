@@ -8,7 +8,8 @@
 </b>
 
 # Short description
-* 
+* ros program that subscribe to the relevant tf and to the map topic and send the robot to a random goal every time through move-base node.
+License: BSD
 
 # Example usage
 ```

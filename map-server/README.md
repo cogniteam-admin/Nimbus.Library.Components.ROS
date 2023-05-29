@@ -8,8 +8,9 @@
 </b>
 
 # Short description
-* map server 
+* map_server provides the map_server ROS Node, which offers map data as a ROS Service. It also provides the map_saver command-line utility, which allows dynamically generated maps to be saved to file.
 License: BSD
+GIT:https://github.com/ros-planning/navigation.git
 
 # Example usage
 ```

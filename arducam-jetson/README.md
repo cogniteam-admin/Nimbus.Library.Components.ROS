@@ -8,7 +8,7 @@
 </b>
 
 # Short description
-* arducam ROS driver
+* a driver for arducam device for jetson platform that publish ros image topic
 
 # Example usage
 ```
