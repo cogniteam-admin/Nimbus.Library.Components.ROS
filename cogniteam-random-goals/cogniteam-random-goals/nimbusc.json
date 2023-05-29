@@ -3,7 +3,7 @@
   "type": "COMPONENT_TYPE_COMPONENT",
   "className": "Ros1Component",
   "instanceName": "",
-  "description": "",
+  "description": "ros program that subscribe to the relevant tf and to the map topic and send the robot to a random goal every time through move-base node.\nLicense: BSD",
   "version": {
     "major": 1,
     "minor": 0,
