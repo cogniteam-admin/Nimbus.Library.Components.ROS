@@ -1,7 +1,7 @@
 import os
 
 def get_repo_url(repo_name):
-    return f"https://git.cognimbus.com/nimbus/nimbus.library.components.ros_new/-/tree/master/{repo_name}"
+    return f"[{repo_name}]({repo_name})"
 
 # This method generates a link to the repo image
 def generate_img_src(dir_path, repo_name, dir_name):
