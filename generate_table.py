@@ -32,7 +32,7 @@ def generate_table():
     repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
 
     f = open(os.path.join(library_dir_path, 'README.md'), 'w')
-    table = "Image | Component Name | Link\n--- | --- | ---\n"
+    table = "Image | Link\n--- | ---\n"
     for repo in sorted(repos):
         print(repo)
         repo_dir_path = os.path.join(library_dir_path, repo)
@@ -46,7 +46,7 @@ def generate_table():
                 pass
         
         for dir in dirs:
-            table += f'{generate_img_src(library_dir_path, repo, dir)} | {dir} | {get_repo_url(repo)}\n'
+            table += f'{generate_img_src(library_dir_path, repo, dir)} | {get_repo_url(repo)}\n'
         
     f.write(table)
     
