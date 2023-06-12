@@ -1,5 +1,3 @@
-
-# #sudo docker run -it --rm --network host --privileged cognimbus/turtlebot3-wafflepi bash
 FROM ros:noetic
 
    

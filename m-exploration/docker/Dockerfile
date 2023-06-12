@@ -1,4 +1,3 @@
-
 FROM ros:kinetic
 
 COPY ./m-explore /exploration_ws/src/m-explore

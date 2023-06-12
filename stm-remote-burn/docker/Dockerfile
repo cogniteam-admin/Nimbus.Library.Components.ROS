@@ -1,3 +1,4 @@
+#FROM ros:ROS1
 FROM ubuntu
 
 COPY ./burn_script.sh /home/remote_burn_ws/burn_script.sh

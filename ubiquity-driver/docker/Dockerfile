@@ -1,3 +1,4 @@
+#FROM ros:melodic
 FROM nimbushaystack/haystack_image_base:latest
 
 
