@@ -278,6 +278,7 @@ def generate_library_reademe():
     repos.remove('.gitignore')
     repos.remove('.gitlab-ci.yml')
     repos.remove('generate_table.py')
+    repos.remove('docker_retag.py')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
     repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only

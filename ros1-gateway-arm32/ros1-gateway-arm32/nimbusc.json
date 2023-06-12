@@ -22,7 +22,7 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "cognimbus/ros1-gateway-arm32",
+      "image": "cognimbus/ros1-gateway-spin-arm32",
       "containerId": "",
       "imageSize": 0,
       "commands": [

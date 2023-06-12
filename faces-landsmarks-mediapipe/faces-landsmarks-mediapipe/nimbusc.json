@@ -22,7 +22,7 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "cognimbus/faces-landsmarks-mediapipe-amd",
+      "image": "cognimbus/faces-landsmarks-mediapipe",
       "containerId": "",
       "imageSize": 0,
       "commands": [

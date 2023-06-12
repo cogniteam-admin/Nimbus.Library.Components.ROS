@@ -21,6 +21,7 @@ def generate_table():
     repos.remove('unclassified')
     repos.remove('generate_readme.py')
     repos.remove('generate_table.py')
+    repo.remove('docker_retag.py')
     repos.remove('README.md')
     repos.remove('.git')
     repos.remove('.gitignore')
