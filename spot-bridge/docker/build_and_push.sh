@@ -3,5 +3,20 @@
 
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
-sudo docker build --tag cognimbus/spot_ws:latest .
+
+#
+# on the terminal (inside the folder of the Dockerfile
+# 
+docker buildx create --name nimbus-builder 
+docker buildx use nimbus-builder
+docker run --privileged --rm tonistiigi/binfmt --install all
+docker buildx inspect --bootstrap
+
+
+#
+# on the terminal (inside the folder of the Dockerfile
+#
+
+
+docker buildx build --platform linux/arm64,linux/amd64 -t cognimbus/spot_ws:latest --push .
 
