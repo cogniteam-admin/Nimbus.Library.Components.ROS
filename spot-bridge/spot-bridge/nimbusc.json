@@ -73,12 +73,12 @@
   "streams": {
     "inputStreams": [
       {
-        "name": "cmd_vel",
+        "name": "spot_cmd_vel",
         "type": "",
         "description": "Command velocity.",
         "streamMode": "STREAM_MODE_TOPIC",
         "rosTopic": {
-          "topic": "/cmd_vel",
+          "topic": "/spot/cmd_vel",
           "type": "Messages.geometry_msgs.Twist",
           "qosProfile": ""
         },

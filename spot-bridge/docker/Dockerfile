@@ -17,6 +17,8 @@ RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 
+COPY ./spot_ros sopt_ws/src/spot_ros
+
 WORKDIR sopt_ws
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -29,7 +31,7 @@ RUN apt install ros-noetic-interactive-marker-twist-server -y && \
     apt install ros-noetic-rviz -y && \
     apt-get install qt5-default -y &&  apt install qttools5-dev -y
 
-RUN mkdir src && cd src && git clone https://github.com/heuristicus/spot_ros.git && \
+RUN cd src && \
     cd spot_ros  && rm -r spot_wrapper && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
     pip3 install -e spot_wrapper && cd .. && cd ..
 
