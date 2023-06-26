@@ -32,7 +32,7 @@ RUN apt install ros-noetic-interactive-marker-twist-server -y && \
     apt-get install qt5-default -y &&  apt install qttools5-dev -y
 
 RUN cd src && \
-    cd spot_ros  && rm -r spot_wrapper && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
+    cd spot_ros && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
     pip3 install -e spot_wrapper && cd .. && cd ..
 
 RUN . /opt/ros/noetic/setup.sh && catkin_make -j1
