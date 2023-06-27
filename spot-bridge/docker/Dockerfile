@@ -29,7 +29,9 @@ RUN apt install ros-noetic-interactive-marker-twist-server -y && \
     apt install ros-noetic-robot-state-publisher -y && \
     apt install ros-noetic-xacro -y && \
     apt install ros-noetic-rviz -y && \
-    apt-get install qt5-default -y &&  apt install qttools5-dev -y
+    apt-get install qt5-default -y &&  apt install qttools5-dev -y && \
+    apt-get install ros-noetic-cv-bridge -y && \
+    apt-get install python-is-python3
 
 RUN cd src && \
     cd spot_ros && git clone https://github.com/bdaiinstitute/spot_wrapper.git && \
