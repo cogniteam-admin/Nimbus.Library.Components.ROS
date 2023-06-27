@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from std_srvs.srv import Empty
+from std_srvs.srv import Trigger
 from std_msgs.msg import String
 
 def action_callback(data):
@@ -9,7 +9,7 @@ def action_callback(data):
     print(f'sending request to service: {service_name}')
     rospy.wait_for_service(service_name)
     try:
-        service_proxy = rospy.ServiceProxy(service_name, Empty)
+        service_proxy = rospy.ServiceProxy(service_name, Trigger)
         response = service_proxy()
         print(f"Service '{service_name}' activated successfully")
     except rospy.ServiceException as e:
