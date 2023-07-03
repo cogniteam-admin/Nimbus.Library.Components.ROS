@@ -2,7 +2,6 @@ Image | Link
 --- | ---
 <img src="./amcl/amcl/amcl.png" alt="amcl" width="40"/> | [amcl](amcl)
 <img src="./arducam-jetson/arducam-jetson/arducam.jpg" alt="arducam-jetson" width="40"/> | [arducam-jetson](arducam-jetson)
-<img src="./aruco-code-detection/aruco-code-detection/aruco_detection.png" alt="aruco-code-detection" width="40"/> | [aruco-code-detection](aruco-code-detection)
 <img src="./autopilot bridge/autopilot bridge/Autopilot_bridge.png" alt="autopilot bridge" width="40"/> | [autopilot bridge](autopilot bridge)
 <img src="./bboxes-to-3d-markers/bboxes-to-3d-markers/Cogniteam_CMYK_Social_white_on_aubergine.jpg" alt="bboxes-to-3d-markers" width="40"/> | [bboxes-to-3d-markers](bboxes-to-3d-markers)
 <img src="./bosch-imu-driver/bosch-imu-driver/bosch-imu-driver.jpeg" alt="bosch-imu-driver" width="40"/> | [bosch-imu-driver](bosch-imu-driver)
