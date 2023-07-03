@@ -18,19 +18,15 @@ def generate_table():
     library_dir_path = os.path.dirname(__file__)
     repos = os.listdir(library_dir_path)
 
-    repos.remove('unclassified')
     repos.remove('generate_readme.py')
     repos.remove('generate_table.py')
-    repo.remove('docker_retag.py')
+    repos.remove('docker_retag.py')
     repos.remove('README.md')
     repos.remove('.git')
     repos.remove('.gitignore')
     repos.remove('.gitlab-ci.yml')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
-    repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
-    repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
 
     f = open(os.path.join(library_dir_path, 'README.md'), 'w')
     table = "Image | Link\n--- | ---\n"
