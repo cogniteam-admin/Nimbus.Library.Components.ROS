@@ -11,7 +11,8 @@ def generate_headline(repo_name:str):
 # This method generates a link to the repo image
 def generate_img_src(dir_path, repo_name):
     try:
-        files = os.listdir(os.path.join(dir_path, repo_name))                                # list the files at the repo nimbus directory
+        files = os.listdir(os.path.join(dir_path, repo_name))          
+        print(files)                      # list the files at the repo nimbus directory
         files.remove('nimbusc.json')                                                         # Remove the nimbus json file from the list (folder contains a json and an image)
         img_name = files[0]                                                                  # Extract the image's name
         return f"<img src=\"./{repo_name}/{img_name}\" alt=\"{repo_name}\" width=\"400\"/>"  # Return the link to the image
@@ -271,7 +272,6 @@ def generate_library_reademe():
     library_dir_path = os.path.dirname(__file__)
     repos = os.listdir(library_dir_path)
 
-    repos.remove('unclassified')
     repos.remove('generate_readme.py')
     repos.remove('README.md')
     repos.remove('.git')
@@ -281,9 +281,7 @@ def generate_library_reademe():
     repos.remove('docker_retag.py')
 
     repos.remove('.filter_only_updated_items.py')  # Unknown
-    repos.remove('hamster-v8-environment')         # hamster environment should not be in this repo, driver only
     repos.remove('isaac-skeleton-viewer')          # Do not contain docker file and docker image
-    repos.remove('slam-toolbox')                   # No "parameters" section, ROS2
 
     for repo in sorted(repos):
         print(repo)

@@ -3,7 +3,7 @@
 <img src="./hands_pose_detection/hand_landmarks.png" alt="hands_pose_detection" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/hands-pose-detection
-* Supported architectures <b>amd64</b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
 * ROS version <b>noetic
 </b>
 

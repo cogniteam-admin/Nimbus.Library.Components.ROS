@@ -2,7 +2,7 @@
 
 <img src="./ros1-gateway-arm32/nimbusc.jpg" alt="ros1-gateway-arm32" width="400"/>
 
-* Dockerhub image https://hub.docker.com/r/cognimbus/ros1-gateway-arm32
+* Dockerhub image https://hub.docker.com/r/cognimbus/ros1-gateway-spin-arm32
 * Supported architectures <b>arm</b>
 * ROS version <b>noetic
 </b>
@@ -13,7 +13,7 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/ros1-gateway-arm32 roslaunch empty.launch
+docker run -it --network=host cognimbus/ros1-gateway-spin-arm32 roslaunch empty.launch
 ```
 
 # Subscribers

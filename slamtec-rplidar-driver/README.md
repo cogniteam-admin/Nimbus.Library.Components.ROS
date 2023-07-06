@@ -2,7 +2,7 @@
 
 <img src="./rplidar-a1/slamtec-rplidar-a1-driver.jpg" alt="rplidar-a1" width="400"/>
 
-* Dockerhub image https://hub.docker.com/r/cognimbus/rplidar-a1-ros
+* Dockerhub image https://hub.docker.com/r/cognimbus/rplidar-a1
 * Supported architectures <b>arm64</b>
 * ROS version <b>noetic
 </b>
@@ -13,7 +13,7 @@ License: BSD
 
 # Example usage
 ```
-docker run -it --network=host cognimbus/rplidar-a1-ros:latest roslaunch rplidar_ros rplidar.launch frame_id:=laser
+docker run -it --network=host cognimbus/rplidar-a1:latest roslaunch rplidar_ros rplidar.launch frame_id:=laser
 ```
 
 # Subscribers

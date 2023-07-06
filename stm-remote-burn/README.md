@@ -4,7 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/stm-remote-burn
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>FROM ubuntu
+* ROS version <b>ROS1
 </b>
 
 # Short description

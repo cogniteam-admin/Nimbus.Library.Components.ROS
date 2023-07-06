@@ -3,7 +3,7 @@
 <img src="./hamster-wandering/nimbusc.png" alt="hamster-wandering" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/hamster-wandering
-* Supported architectures <b>arm64</b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
 * ROS version <b>noetic
 </b>
 

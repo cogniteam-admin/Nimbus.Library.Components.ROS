@@ -4,7 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/cogniteam-anomaly-detection
 * Supported architectures <b>arm64/amd64/unknown/unknown</b>
-* ROS version <b>ros-core
+* ROS version <b>noetic
 </b>
 
 # Short description

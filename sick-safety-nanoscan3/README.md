@@ -1,6 +1,6 @@
-# Nanoscan3
+# Sick-Safety-Nanoscan3
 
-<img src="./nanoscan3/nanoscan3.png" alt="nanoscan3" width="400"/>
+<img src="./sick-safety-nanoscan3/nanoscan3.png" alt="sick-safety-nanoscan3" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/sick-safety-nanoscan3
 * Supported architectures <b>amd64/arm64</b>

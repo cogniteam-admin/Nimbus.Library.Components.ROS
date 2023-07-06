@@ -3,8 +3,8 @@
 <img src="./turtlebot3-lidar/turtlebot.jpeg" alt="turtlebot3-lidar" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64</b>
-* ROS version <b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic
 </b>
 
 # Short description
@@ -40,8 +40,8 @@ This node does not provide tf
 <img src="./turtlebot3-picamera/turtlebot.jpeg" alt="turtlebot3-picamera" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64</b>
-* ROS version <b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic
 </b>
 
 # Short description
@@ -77,8 +77,8 @@ This node does not provide tf
 <img src="./turtlebot3-driver/turtlebot.jpeg" alt="turtlebot3-driver" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64</b>
-* ROS version <b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic
 </b>
 
 # Short description
@@ -101,6 +101,8 @@ ROS topic | type
 ROS topic | type
 --- | ---
 /odom | nav_msgs/Odometry
+/sensor_state | turtlebot3_msgs/SensorState
+/imu | sensor_msgs/Imu
 
 
 # Required tf
@@ -116,8 +118,8 @@ This node does not provide tf
 <img src="./turtlebot3-slam/turtlebot.jpeg" alt="turtlebot3-slam" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64</b>
-* ROS version <b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic
 </b>
 
 # Short description
@@ -155,8 +157,8 @@ map--->odom
 <img src="./turtlebot3-navigation/turtlebot.jpeg" alt="turtlebot3-navigation" width="400"/>
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/turtlebot3-wafflepi
-* Supported architectures <b>arm64</b>
-* ROS version <b>
+* Supported architectures <b>arm64/amd64/unknown/unknown</b>
+* ROS version <b>noetic
 </b>
 
 # Short description

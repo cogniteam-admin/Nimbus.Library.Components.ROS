@@ -4,7 +4,7 @@
 
 * Dockerhub image https://hub.docker.com/r/cognimbus/ros1-autopilot-bridge
 * Supported architectures <b>arm64/amd64</b>
-* ROS version <b>navSatFix
+* ROS version <b>melodic
 </b>
 
 # Short description

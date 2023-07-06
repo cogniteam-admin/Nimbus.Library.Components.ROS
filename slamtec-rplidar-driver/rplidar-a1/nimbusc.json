@@ -16,7 +16,7 @@
     "hostIpAddress": "",
     "variables": [],
     "dockerInfo": {
-      "image": "cognimbus/rplidar-a1-ros:latest",
+      "image": "cognimbus/rplidar-a1:latest",
       "containerId": "",
       "imageSize": 0,
       "commands": [
